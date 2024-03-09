@@ -1,0 +1,42 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="DDoS Defenders"
+run/main_scene="res://Scenes/screens/battle_scene.tscn"
+config/features=PackedStringArray("4.1", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+UnderscoreMeansPrivate="*res://addons/UnderscoreMeansPrivate/PrivateProtection.gd"
+Core="*res://Scenes/core.tscn"
+SaveSystem="*res://addons/save_system/save_system.gd"
+
+[debug]
+
+gdscript/Underscore_Means_Private/force_project_to_abort_if_errors=true
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/mode=3
+window/size/resizable=false
+window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/UnderscoreMeansPrivate/plugin.cfg", "res://addons/save_system/plugin.cfg")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

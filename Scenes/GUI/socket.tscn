@@ -1,0 +1,279 @@
+[gd_scene load_steps=16 format=3 uid="uid://bedy3pqyxb5of"]
+
+[ext_resource type="Texture2D" uid="uid://csivs41eg32jo" path="res://Assets/empty_socket.png" id="1_0utwt"]
+[ext_resource type="Texture2D" uid="uid://b05kv4rc1gb2h" path="res://Assets/connector_socket.png" id="1_4x6i0"]
+[ext_resource type="Script" path="res://Scenes/GUI/socket.gd" id="1_fk7tx"]
+[ext_resource type="Script" path="res://Scenes/GUI/Prices.gd" id="2_bjt5q"]
+[ext_resource type="Texture2D" uid="uid://514y6osjgfve" path="res://Assets/subtractor_socket.png" id="4_ds7dy"]
+[ext_resource type="Texture2D" uid="uid://chricm4xybrvg" path="res://Assets/selected_socket.png" id="4_fqotd"]
+[ext_resource type="Texture2D" uid="uid://cbj1752imqqni" path="res://Assets/shift_right_socket.png" id="6_fhpaa"]
+[ext_resource type="Theme" uid="uid://bddpr6qdxh17i" path="res://GUI/lcd_display.tres" id="6_t2qxs"]
+[ext_resource type="Texture2D" uid="uid://dqx1i32882lcw" path="res://Assets/memory_socket.png" id="7_04lug"]
+[ext_resource type="Texture2D" uid="uid://uidy5s7q3kya" path="res://Assets/accumulator_socket.png" id="7_8cch3"]
+[ext_resource type="Texture2D" uid="uid://dttcnrovc676q" path="res://Assets/Lightmask.png" id="11_a47f0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxnjc"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h0ghq"]
+light_mode = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mpdru"]
+bg_color = Color(0, 0, 0, 0.705882)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6j3fi"]
+bg_color = Color(0.694118, 0.243137, 0.32549, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.694118, 0.243137, 0.32549, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[node name="Socket" type="Node2D" groups=["sockets"]]
+script = ExtResource("1_fk7tx")
+
+[node name="Prices" type="Node" parent="."]
+script = ExtResource("2_bjt5q")
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_oxnjc")
+
+[node name="Connectors" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Left" type="Sprite2D" parent="Connectors"]
+visible = false
+texture = ExtResource("1_4x6i0")
+
+[node name="Up" type="Sprite2D" parent="Connectors"]
+visible = false
+rotation = 1.5708
+texture = ExtResource("1_4x6i0")
+
+[node name="Right" type="Sprite2D" parent="Connectors"]
+visible = false
+rotation = 3.14159
+texture = ExtResource("1_4x6i0")
+
+[node name="Down" type="Sprite2D" parent="Connectors"]
+visible = false
+rotation = 4.71108
+texture = ExtResource("1_4x6i0")
+
+[node name="Types" type="Node2D" parent="."]
+z_index = 50
+z_as_relative = false
+
+[node name="Background" type="ColorRect" parent="Types"]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.0196078, 0.0901961, 0.156863, 1)
+
+[node name="Empty" type="Sprite2D" parent="Types"]
+texture = ExtResource("1_0utwt")
+
+[node name="Subtractor" type="Sprite2D" parent="Types"]
+visible = false
+texture = ExtResource("4_ds7dy")
+
+[node name="ShiftRight" type="Sprite2D" parent="Types"]
+visible = false
+texture = ExtResource("6_fhpaa")
+
+[node name="Memory" type="Sprite2D" parent="Types"]
+visible = false
+texture = ExtResource("7_04lug")
+
+[node name="Accumulator" type="Sprite2D" parent="Types"]
+visible = false
+texture = ExtResource("7_8cch3")
+
+[node name="CooldownDebug" type="ColorRect" parent="Types"]
+visible = false
+offset_left = -5.0
+offset_top = -5.0
+offset_right = -4.0
+offset_bottom = -4.0
+color = Color(0.682353, 0.129412, 0.168627, 1)
+
+[node name="Levels" type="Node2D" parent="."]
+z_index = 51
+
+[node name="l1" type="ColorRect" parent="Levels"]
+visible = false
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 5.0
+offset_bottom = 5.0
+color = Color(0.811917, 0.776745, 0.721538, 1)
+
+[node name="l2" type="ColorRect" parent="Levels"]
+visible = false
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 5.0
+offset_bottom = 3.0
+color = Color(0.811917, 0.776745, 0.721538, 1)
+
+[node name="l3" type="ColorRect" parent="Levels"]
+visible = false
+offset_left = 4.0
+offset_right = 5.0
+offset_bottom = 1.0
+color = Color(0.811917, 0.776745, 0.721538, 1)
+
+[node name="l4" type="ColorRect" parent="Levels"]
+visible = false
+offset_left = 4.0
+offset_top = -2.0
+offset_right = 5.0
+offset_bottom = -1.0
+color = Color(0.811917, 0.776745, 0.721538, 1)
+
+[node name="SocketButton" type="TextureButton" parent="."]
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+texture_pressed = ExtResource("4_fqotd")
+texture_hover = ExtResource("4_fqotd")
+ignore_texture_size = true
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 1.1
+
+[node name="GUI" type="Control" parent="."]
+visible = false
+z_index = 100
+z_as_relative = false
+material = SubResource("CanvasItemMaterial_h0ghq")
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+theme = ExtResource("6_t2qxs")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="BackgroundDark" type="ColorRect" parent="GUI"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -940.0
+offset_top = -520.0
+offset_right = 980.0
+offset_bottom = 560.0
+color = Color(0, 0, 0, 0.705882)
+
+[node name="Escape" type="Button" parent="GUI/BackgroundDark"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+pivot_offset = Vector2(960, 540)
+theme_override_styles/normal = SubResource("StyleBoxFlat_mpdru")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mpdru")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mpdru")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_mpdru")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mpdru")
+flat = true
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Build" type="Control" parent="GUI"]
+visible = false
+use_parent_material = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubtractorButton" type="Button" parent="GUI/Build"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -44.0
+offset_top = -12.0
+offset_right = 17.0
+offset_bottom = 17.0
+text = "Sub 0x0"
+
+[node name="ShiftRightButton" type="Button" parent="GUI/Build"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 23.0
+offset_top = -12.0
+offset_right = 84.0
+offset_bottom = 17.0
+text = "Shr 0x0"
+
+[node name="MemButton" type="Button" parent="GUI/Build"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -44.0
+offset_top = 23.0
+offset_right = 16.0
+offset_bottom = 52.0
+text = "Mem 0x0"
+
+[node name="AccumulatorButton" type="Button" parent="GUI/Build"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 24.0
+offset_top = 23.0
+offset_right = 84.0
+offset_bottom = 52.0
+text = "Acc 0x0"
+
+[node name="Upgrade" type="Control" parent="GUI"]
+visible = false
+use_parent_material = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UpgradeButton" type="Button" parent="GUI/Upgrade"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -44.0
+offset_top = -12.0
+offset_right = 84.0
+offset_bottom = 17.0
+text = "Upgrade (-5$)"
+
+[node name="DestroyButton" type="Button" parent="GUI/Upgrade"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -44.0
+offset_top = 23.0
+offset_right = 84.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.694118, 0.243137, 0.32549, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_6j3fi")
+text = "Destroy (+5$)"
+
+[node name="Halo" type="PointLight2D" parent="."]
+color = Color(0.74902, 0.470588, 0.0745098, 1)
+energy = 0.8
+texture = ExtResource("11_a47f0")
+texture_scale = 0.2
+
+[connection signal="area_shape_entered" from="Range" to="." method="_on_range_area_shape_entered"]
+[connection signal="area_shape_exited" from="Range" to="." method="_on_range_area_shape_exited"]
+[connection signal="pressed" from="SocketButton" to="." method="_on_socket_button_pressed"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="button_down" from="GUI/BackgroundDark/Escape" to="." method="_on_escape_button_down"]
+[connection signal="pressed" from="GUI/Build/SubtractorButton" to="." method="_on_subtractor_button_pressed"]
+[connection signal="pressed" from="GUI/Build/ShiftRightButton" to="." method="_on_shift_right_button_pressed"]
+[connection signal="pressed" from="GUI/Build/MemButton" to="." method="_on_mem_button_pressed"]
+[connection signal="pressed" from="GUI/Build/AccumulatorButton" to="." method="_on_accumulator_button_pressed"]
+[connection signal="pressed" from="GUI/Upgrade/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="GUI/Upgrade/DestroyButton" to="." method="_on_destroy_button_pressed"]

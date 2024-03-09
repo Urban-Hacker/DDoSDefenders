@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccd6wm33lhp57"]
+
+[ext_resource type="Texture2D" uid="uid://dxqhjc373uk0v" path="res://Assets/logo.png" id="1_6pn0b"]
+[ext_resource type="Theme" uid="uid://bddpr6qdxh17i" path="res://GUI/lcd_display.tres" id="1_33hae"]
+[ext_resource type="Texture2D" uid="uid://dttcnrovc676q" path="res://Assets/Lightmask.png" id="2_82x16"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bohnx"]
+blend_mode = 1
+light_mode = 1
+
+[node name="WelcomeScreen" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.0156863, 0.207843, 0.329412, 1)
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_33hae")
+metadata/_edit_lock_ = true
+
+[node name="ColorBackground" type="ColorRect" parent="Background"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.0509804, 0.168627, 0.270588, 1)
+
+[node name="Logo" type="Sprite2D" parent="Background"]
+position = Vector2(317, 163)
+texture = ExtResource("1_6pn0b")
+
+[node name="PointLight2D" type="PointLight2D" parent="Background"]
+position = Vector2(320, 160)
+color = Color(0, 0.572549, 0.419608, 1)
+energy = 1.5
+texture = ExtResource("2_82x16")
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 640.0
+offset_bottom = 216.0
+color = Color(0.0507973, 0.168536, 0.270634, 1)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Background"]
+material = SubResource("CanvasItemMaterial_bohnx")
+layout_mode = 0
+offset_left = 192.0
+offset_top = 190.0
+offset_right = 448.0
+offset_bottom = 214.0
+theme_override_colors/font_color = Color(0.937255, 0, 0.137255, 1)
+theme_override_colors/font_outline_color = Color(0.858824, 0, 0.470588, 0.529412)
+theme_override_constants/outline_size = 1
+text = "Defend, Deter, Dominate!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 344.0
+offset_right = 632.0
+offset_bottom = 368.0
+text = "Ver: 0.1a"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="Background"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 296.0
+offset_right = 384.0
+offset_bottom = 320.0
+text = "Login"

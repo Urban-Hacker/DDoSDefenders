@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://h4kttepilw52"]
+
+[ext_resource type="Texture2D" uid="uid://d0rfau2yl2cqy" path="res://Assets/cpu.png" id="1_nv7jx"]
+[ext_resource type="Script" path="res://Scenes/GUI/cpu.gd" id="1_yr7hu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_unl8c"]
+
+[sub_resource type="Animation" id="Animation_re8yu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/hit:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.937255, 0.0901961, 0.368627, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xry3e"]
+resource_name = "hit"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/hit:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.937255, 0.0901961, 0.368627, 0), Color(0.937255, 0.0901961, 0.368627, 1), Color(0.937255, 0.0901961, 0.368627, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8h8jx"]
+_data = {
+"RESET": SubResource("Animation_re8yu"),
+"hit": SubResource("Animation_xry3e")
+}
+
+[node name="CPU" type="Node2D"]
+script = ExtResource("1_yr7hu")
+
+[node name="DamageRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageRange"]
+shape = SubResource("CircleShape2D_unl8c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 50
+z_as_relative = false
+texture = ExtResource("1_nv7jx")
+
+[node name="hit" type="ColorRect" parent="Sprite2D"]
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+color = Color(0.937255, 0.0901961, 0.368627, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8h8jx")
+}
+
+[connection signal="area_shape_entered" from="DamageRange" to="." method="_on_damage_range_area_shape_entered"]
