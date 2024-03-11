@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv6ufna2klqdy"]
+[gd_scene load_steps=6 format=3 uid="uid://bv6ufna2klqdy"]
 
 [ext_resource type="Script" path="res://Scenes/GUI/packet.gd" id="1_hif8q"]
 [ext_resource type="Theme" uid="uid://bddpr6qdxh17i" path="res://GUI/lcd_display.tres" id="2_0quk4"]
+[ext_resource type="Texture2D" uid="uid://dttcnrovc676q" path="res://Assets/Lightmask.png" id="3_iqc1r"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kjtg3"]
-blend_mode = 1
+light_mode = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dm12p"]
 radius = 5.0
@@ -36,6 +37,11 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "0x0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="Widget"]
+energy = 0.1
+texture = ExtResource("3_iqc1r")
+texture_scale = 0.1
 
 [node name="Range" type="Area2D" parent="."]
 metadata/is_enemy_area = true

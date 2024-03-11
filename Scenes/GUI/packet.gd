@@ -15,6 +15,7 @@ func _ready():
 		_ttl = randi_range(0, 7)
 	_socket_reference_counter = 0
 	$Range/Debug.hide()
+	$Range.hide()
 	refresh()
 
 func _process(delta):
@@ -49,3 +50,6 @@ func getting_attacked_by_subtractor(level:int) -> void:
 func getting_attacked_by_shift_right(level:int) -> void:
 	if _ttl > 0:
 		_ttl = int(_ttl / pow(2, level))
+
+func getting_attacked_by_memory(level:int) -> void:
+	queue_free()

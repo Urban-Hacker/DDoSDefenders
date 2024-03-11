@@ -11,17 +11,24 @@ var _current_type:Enum.ChipTypes
 var _level:int
 var _collision_candidates:Dictionary
 var _is_cooling_down:bool
+var _memory_full:bool # used for memory type chips
 
 func _ready():
 	_is_cooling_down = false
 	_collision_candidates = {}
 	_set_new_type()
+	_memory_full = false
 
 func _process(delta):
 	if _type == Enum.ChipTypes.empty:
 		$Types/CooldownDebug.visible = false
 	else:
 		$Types/CooldownDebug.visible = _is_cooling_down
+	
+	if _type == Enum.ChipTypes.memory:
+		$Types/CooldownMemoryFull.visible = _memory_full
+	else:
+		$Types/CooldownMemoryFull.hide()
 
 func _set_new_type():
 	_current_type = _type
@@ -39,6 +46,7 @@ func _set_new_type():
 		$Types/Empty.show()
 		_level = 0
 	else:
+		_memory_full = false
 		_level = 1
 		$Halo.show()
 	
@@ -52,6 +60,7 @@ func _set_new_type():
 	
 	if _current_type == Enum.ChipTypes.memory:
 		$Types/Memory.show()
+		$Cooldown.wait_time = 5.0
 	
 	if _current_type == Enum.ChipTypes.accumulator:
 		$Types/Accumulator.show()
@@ -123,6 +132,10 @@ func _render_prices():
 
 
 func _on_socket_button_pressed():
+	if _memory_full:
+		_memory_full = false
+		$Cooldown.start()
+		return
 	_render_prices()
 	get_tree().call_group("sockets", "disable")
 	$GUI.show()
@@ -137,6 +150,9 @@ func _on_escape_button_down():
 	_reset_gui()
 
 func _attack():
+	if _memory_full:
+		print("Memory is full for now")
+		return
 	if _is_cooling_down:
 		print("cooling down")
 		return
@@ -154,8 +170,8 @@ func _attack():
 			_collision_candidates[candidate].getting_attacked_by_shift_right(_level)
 			
 		if _current_type == Enum.ChipTypes.memory:
-			pass
-			#_collision_candidates[candidate].getting_attacked_by_subtractor(_level)
+			_memory_full = true
+			_collision_candidates[candidate].getting_attacked_by_memory(_level)
 		
 		if _current_type == Enum.ChipTypes.accumulator:
 			pass
@@ -223,5 +239,8 @@ func _on_range_area_shape_exited(area_rid, area, area_shape_index, local_shape_i
 
 
 func _on_cooldown_timeout():
+	if _memory_full:
+		$Cooldown.start()
+		return
 	_is_cooling_down = false
 	_attack()

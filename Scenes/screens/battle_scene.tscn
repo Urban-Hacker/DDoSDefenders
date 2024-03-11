@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ceqei3cj8lvn1"]
+[gd_scene load_steps=13 format=3 uid="uid://ceqei3cj8lvn1"]
 
 [ext_resource type="Script" path="res://Scenes/screens/battle_scene.gd" id="1_fyr2c"]
 [ext_resource type="PackedScene" uid="uid://bedy3pqyxb5of" path="res://Scenes/GUI/socket.tscn" id="1_rn2xe"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://chj8o3aewsylw" path="res://Assets/wire_straight.png" id="5_tck5s"]
 [ext_resource type="Texture2D" uid="uid://cv7htjlys2nux" path="res://Assets/wire_angle.png" id="7_2jdse"]
 [ext_resource type="Texture2D" uid="uid://ksor2ek4f62g" path="res://Assets/wire_angle_diagonal.png" id="8_j2qi5"]
+[ext_resource type="PackedScene" uid="uid://cd43rmh3olkh5" path="res://Scenes/GUI/glow.tscn" id="9_4nqhl"]
 [ext_resource type="Texture2D" uid="uid://bubtqwtku2wla" path="res://Assets/wire_diagonal.png" id="9_a155n"]
 [ext_resource type="PackedScene" uid="uid://byonokb5d853j" path="res://Scenes/GUI/header.tscn" id="10_71ru6"]
 
@@ -26,7 +27,7 @@ point_count = 6
 script = ExtResource("1_fyr2c")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.227451, 0.647059, 0.933333, 1)
+color = Color(0.27451, 0.47451, 0.360784, 1)
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -39,28 +40,23 @@ metadata/_edit_group_ = true
 [node name="WireDeco" type="Node2D" parent="."]
 
 [node name="ConnectorStraight8" type="Sprite2D" parent="WireDeco"]
-modulate = Color(0.215686, 0.290196, 0.756863, 0.662745)
-position = Vector2(291, 229)
+modulate = Color(0, 0.752941, 0.945098, 1)
+position = Vector2(245, 230)
 texture = ExtResource("5_tck5s")
 
 [node name="ConnectorStraight9" type="Sprite2D" parent="WireDeco"]
-modulate = Color(0.215686, 0.290196, 0.756863, 0.662745)
-position = Vector2(315, 229)
+modulate = Color(0, 0.752941, 0.945098, 1)
+position = Vector2(269, 230)
 texture = ExtResource("5_tck5s")
 
 [node name="ConnectorStraight10" type="Sprite2D" parent="WireDeco"]
-modulate = Color(0.215686, 0.290196, 0.756863, 0.662745)
-position = Vector2(339, 229)
+modulate = Color(0, 0.752941, 0.945098, 1)
+position = Vector2(293, 230)
 texture = ExtResource("5_tck5s")
 
 [node name="ConnectorStraight11" type="Sprite2D" parent="WireDeco"]
-modulate = Color(0.215686, 0.290196, 0.756863, 0.662745)
-position = Vector2(267, 229)
-texture = ExtResource("5_tck5s")
-
-[node name="ConnectorStraight12" type="Sprite2D" parent="WireDeco"]
-modulate = Color(0.215686, 0.290196, 0.756863, 0.662745)
-position = Vector2(243, 229)
+modulate = Color(0, 0.752941, 0.945098, 1)
+position = Vector2(317, 230)
 texture = ExtResource("5_tck5s")
 
 [node name="Wire" type="Node2D" parent="."]
@@ -195,6 +191,12 @@ curve = SubResource("Curve2D_wpom7")
 [node name="Path2D2" type="Path2D" parent="Paths"]
 position = Vector2(-128, 0)
 curve = SubResource("Curve2D_bcwrg")
+
+[node name="Node2D" type="Node2D" parent="."]
+z_index = 1000
+z_as_relative = false
+
+[node name="Glow" parent="Node2D" instance=ExtResource("9_4nqhl")]
 
 [node name="CreateEnemies" type="Timer" parent="."]
 autostart = true
