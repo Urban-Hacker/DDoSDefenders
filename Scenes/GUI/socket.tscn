@@ -53,21 +53,17 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Left" type="Sprite2D" parent="Connectors"]
-visible = false
 texture = ExtResource("1_4x6i0")
 
 [node name="Up" type="Sprite2D" parent="Connectors"]
-visible = false
 rotation = 1.5708
 texture = ExtResource("1_4x6i0")
 
 [node name="Right" type="Sprite2D" parent="Connectors"]
-visible = false
 rotation = 3.14159
 texture = ExtResource("1_4x6i0")
 
 [node name="Down" type="Sprite2D" parent="Connectors"]
-visible = false
 rotation = 4.71108
 texture = ExtResource("1_4x6i0")
 
@@ -83,7 +79,6 @@ offset_bottom = 8.0
 color = Color(0.0196078, 0.0901961, 0.156863, 1)
 
 [node name="Empty" type="Sprite2D" parent="Types"]
-visible = false
 texture = ExtResource("1_0utwt")
 
 [node name="Subtractor" type="Sprite2D" parent="Types"]
@@ -95,6 +90,7 @@ visible = false
 texture = ExtResource("6_fhpaa")
 
 [node name="Memory" type="Sprite2D" parent="Types"]
+visible = false
 texture = ExtResource("7_04lug")
 
 [node name="Accumulator" type="Sprite2D" parent="Types"]
@@ -102,6 +98,7 @@ visible = false
 texture = ExtResource("7_8cch3")
 
 [node name="CooldownMemoryFull" type="Sprite2D" parent="Types"]
+visible = false
 texture = ExtResource("9_h87io")
 
 [node name="CooldownDebug" type="ColorRect" parent="Types"]
@@ -271,10 +268,13 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_6j3fi")
 text = "Destroy (+5$)"
 
 [node name="Halo" type="PointLight2D" parent="."]
+visible = false
 color = Color(0.74902, 0.470588, 0.0745098, 1)
 energy = 0.8
 texture = ExtResource("11_a47f0")
 texture_scale = 0.2
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [connection signal="area_shape_entered" from="Range" to="." method="_on_range_area_shape_entered"]
 [connection signal="area_shape_exited" from="Range" to="." method="_on_range_area_shape_exited"]

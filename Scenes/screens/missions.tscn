@@ -145,7 +145,6 @@ color = Color(0.219608, 0.117647, 0.419608, 1)
 
 [node name="Lights" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="Lights"]
 position = Vector2(299, 54)
@@ -177,7 +176,8 @@ texture = ExtResource("3_m0glj")
 texture_scale = 0.5
 
 [node name="PointLight2D5" type="PointLight2D" parent="Lights"]
-position = Vector2(480, 216)
+visible = false
+position = Vector2(496, 232)
 color = Color(0.262745, 0.262745, 0.419608, 1)
 shadow_enabled = true
 shadow_filter = 1
@@ -186,6 +186,7 @@ texture = ExtResource("3_m0glj")
 texture_scale = 0.5
 
 [node name="PointLight2D6" type="PointLight2D" parent="Lights"]
+visible = false
 position = Vector2(176, 224)
 color = Color(0.262745, 0.262745, 0.419608, 1)
 energy = 2.0
@@ -196,6 +197,7 @@ texture = ExtResource("3_m0glj")
 texture_scale = 0.5
 
 [node name="PointLight2D7" type="PointLight2D" parent="Lights"]
+visible = false
 position = Vector2(296, 328)
 color = Color(0.262745, 0.262745, 0.419608, 1)
 shadow_enabled = true

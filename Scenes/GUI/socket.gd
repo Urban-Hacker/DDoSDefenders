@@ -5,6 +5,8 @@ extends Node2D
 @export var _connector_right:bool = false
 @export var _connector_down:bool = false
 
+@export var _show_upgrades:bool = true
+
 @export var _type:Enum.ChipTypes
 var _current_type:Enum.ChipTypes
 
@@ -79,15 +81,25 @@ func _render_levels():
 	$Levels/l2.hide()
 	$Levels/l3.hide()
 	$Levels/l4.hide()
+	$Halo.texture_scale = 0.0
+	$Halo.energy = 0.0
 	
 	if _level >= 1:
 		$Levels/l1.show()
+		$Halo.texture_scale = 0.2
+		$Halo.energy = 0.7
 	if _level >= 2:
 		$Levels/l2.show()
+		$Halo.texture_scale = 0.3
+		$Halo.energy = 0.8
 	if _level >= 3:
 		$Levels/l3.show()
+		$Halo.texture_scale = 0.4
+		$Halo.energy = 0.9
 	if _level >= 4:
 		$Levels/l4.show()
+		$Halo.texture_scale = 0.5
+		$Halo.energy = 1.0
 
 func _reset_gui():
 	get_tree().call_group("sockets", "enable")
@@ -132,6 +144,10 @@ func _render_prices():
 
 
 func _on_socket_button_pressed():
+
+	if _current_type != Enum.ChipTypes.empty and not _show_upgrades:
+		return
+
 	if _memory_full:
 		_memory_full = false
 		$Cooldown.start()

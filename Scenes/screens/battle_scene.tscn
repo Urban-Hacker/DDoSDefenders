@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/screens/battle_scene.gd" id="1_fyr2c"]
 [ext_resource type="PackedScene" uid="uid://bedy3pqyxb5of" path="res://Scenes/GUI/socket.tscn" id="1_rn2xe"]
+[ext_resource type="Texture2D" uid="uid://cwhgje5n55gow" path="res://Assets/wire_entry_point.png" id="3_qtmxy"]
 [ext_resource type="PackedScene" uid="uid://h4kttepilw52" path="res://Scenes/GUI/cpu.tscn" id="3_tyv3j"]
-[ext_resource type="Texture2D" uid="uid://cwhgje5n55gow" path="res://Assets/wire_connector.png" id="4_h3grn"]
 [ext_resource type="Texture2D" uid="uid://chj8o3aewsylw" path="res://Assets/wire_straight.png" id="5_tck5s"]
 [ext_resource type="Texture2D" uid="uid://cv7htjlys2nux" path="res://Assets/wire_angle.png" id="7_2jdse"]
 [ext_resource type="Texture2D" uid="uid://ksor2ek4f62g" path="res://Assets/wire_angle_diagonal.png" id="8_j2qi5"]
@@ -65,21 +65,21 @@ metadata/_edit_group_ = true
 
 [node name="ConnectorTest" type="Sprite2D" parent="Wire"]
 position = Vector2(200, 192)
-texture = ExtResource("4_h3grn")
+texture = ExtResource("3_qtmxy")
 
 [node name="ConnectorTest2" type="Sprite2D" parent="Wire"]
 position = Vector2(224, 144)
-texture = ExtResource("4_h3grn")
+texture = ExtResource("3_qtmxy")
 
 [node name="ConnectorTest4" type="Sprite2D" parent="Wire"]
 position = Vector2(400, 146)
-texture = ExtResource("4_h3grn")
+texture = ExtResource("3_qtmxy")
 flip_h = true
 
 [node name="ConnectorTest3" type="Sprite2D" parent="Wire"]
 position = Vector2(296, 120)
 rotation = 1.57079
-texture = ExtResource("4_h3grn")
+texture = ExtResource("3_qtmxy")
 
 [node name="ConnectorStraight" type="Sprite2D" parent="Wire"]
 position = Vector2(296, 192)
@@ -131,7 +131,7 @@ flip_v = true
 
 [node name="ConnectorTest5" type="Sprite2D" parent="Wire"]
 position = Vector2(380, 187)
-texture = ExtResource("4_h3grn")
+texture = ExtResource("3_qtmxy")
 flip_h = true
 
 [node name="AngleDiagonalSocket3" type="Sprite2D" parent="Wire"]
@@ -183,6 +183,7 @@ _type = 2
 position = Vector2(320, 192)
 
 [node name="Paths" type="Node2D" parent="."]
+visible = false
 
 [node name="Path2D" type="Path2D" parent="Paths"]
 position = Vector2(-128, 0)
