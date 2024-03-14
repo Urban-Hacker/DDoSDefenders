@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="DDoS Defenders"
-run/main_scene="res://Scenes/screens/battle_scene.tscn"
+run/main_scene="res://Scenes/Levels/probation_period_0.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 config/version_main=0
