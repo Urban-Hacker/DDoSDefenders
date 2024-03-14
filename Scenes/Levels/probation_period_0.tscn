@@ -192,6 +192,7 @@ position = Vector2(336, 243)
 [node name="Path2D" type="Path2D" parent="Paths"]
 curve = SubResource("Curve2D_w0x51")
 script = ExtResource("7_8calf")
+_active_waves = Array[bool]([false])
 
 [node name="Path2D2" type="Path2D" parent="Paths"]
 position = Vector2(-25.0981, 0)

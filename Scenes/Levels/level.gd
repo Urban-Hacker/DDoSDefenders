@@ -28,6 +28,7 @@ func _on_enemy_creator_timeout():
 	if wave.get_quantity_remaining() > 0:
 		var spawn = get_spawn_point()
 		spawn.create_packet()
+		wave.enemy_created()
 
 func _self_tests():
 	assert(get_node("Ambiance") != null)
