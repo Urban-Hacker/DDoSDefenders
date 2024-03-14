@@ -1,16 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpci6qhatd6cj"]
+[gd_scene load_steps=11 format=3 uid="uid://cpci6qhatd6cj"]
 
 [ext_resource type="PackedScene" uid="uid://bedy3pqyxb5of" path="res://Scenes/GUI/socket.tscn" id="1_hgsme"]
 [ext_resource type="Texture2D" uid="uid://chj8o3aewsylw" path="res://Assets/wire_straight.png" id="1_ign0g"]
+[ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_y7rm8"]
 [ext_resource type="PackedScene" uid="uid://cd43rmh3olkh5" path="res://Scenes/GUI/glow.tscn" id="2_7686q"]
 [ext_resource type="Texture2D" uid="uid://ksor2ek4f62g" path="res://Assets/wire_angle_diagonal.png" id="2_bdvtj"]
 [ext_resource type="Texture2D" uid="uid://cwhgje5n55gow" path="res://Assets/wire_entry_point.png" id="3_joexo"]
 [ext_resource type="PackedScene" uid="uid://h4kttepilw52" path="res://Scenes/GUI/cpu.tscn" id="6_6uifc"]
+[ext_resource type="Script" path="res://Scenes/Levels/path.gd" id="7_8calf"]
+[ext_resource type="Script" path="res://Scenes/Levels/wave.gd" id="8_u4k0c"]
+
+[sub_resource type="Curve2D" id="Curve2D_w0x51"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 305, 74, 0, 0, 0, 0, 305, 89, 0, 0, 0, 0, 305, 96, 0, 0, 0, 0, 313, 104, 0, 0, 0, 0, 320, 111, 0, 0, 0, 0, 320, 114, 0, 0, 0, 0, 320, 193, 0, 0, 0, 0, 329, 202, 0, 0, 0, 0, 335, 208, 0, 0, 0, 0, 335, 212, 0, 0, 0, 0, 335, 243)
+}
+point_count = 11
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_y7rm8")
+_level_name = "Probation Period: First Week"
+_author = "Urban Hacker"
+_official_level = true
+_waves = 1
 
 [node name="Ambiance" type="CanvasModulate" parent="."]
-color = Color(0.27451, 0.47451, 0.360784, 1)
+color = Color(0.596078, 0.337255, 0.992157, 1)
 
 [node name="Background" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -24,35 +38,34 @@ metadata/_edit_lock_ = true
 [node name="WiresDeco" type="Node2D" parent="Background"]
 modulate = Color(0.52549, 0.866667, 1, 0.411765)
 
-[node name="VerticalConnector3" type="Sprite2D" parent="Background/WiresDeco"]
-position = Vector2(349, 194)
+[node name="Node2D" type="Node2D" parent="Background/WiresDeco"]
+position = Vector2(761, -21)
+scale = Vector2(-1, 1)
+
+[node name="VerticalConnector3" type="Sprite2D" parent="Background/WiresDeco/Node2D"]
+position = Vector2(421, 165.999)
 rotation = 1.5708
 texture = ExtResource("1_ign0g")
 
-[node name="VerticalConnector4" type="Sprite2D" parent="Background/WiresDeco"]
-position = Vector2(349, 170)
+[node name="VerticalConnector4" type="Sprite2D" parent="Background/WiresDeco/Node2D"]
+position = Vector2(421, 141.999)
 rotation = 1.5708
 texture = ExtResource("1_ign0g")
 
-[node name="VerticalConnector5" type="Sprite2D" parent="Background/WiresDeco"]
-position = Vector2(364, 121)
-rotation = 1.5708
-texture = ExtResource("1_ign0g")
-
-[node name="AngleConnector3" type="Sprite2D" parent="Background/WiresDeco"]
-position = Vector2(349, 146)
+[node name="AngleConnector3" type="Sprite2D" parent="Background/WiresDeco/Node2D"]
+position = Vector2(421, 118)
 rotation = -1.5708
 texture = ExtResource("2_bdvtj")
 flip_h = true
 flip_v = true
 
-[node name="AngleConnector4" type="Sprite2D" parent="Background/WiresDeco"]
-position = Vector2(364, 145)
+[node name="AngleConnector4" type="Sprite2D" parent="Background/WiresDeco/Node2D"]
+position = Vector2(436, 117)
 rotation = -1.5708
 texture = ExtResource("2_bdvtj")
 
-[node name="AngleConnector5" type="Sprite2D" parent="Background/WiresDeco"]
-position = Vector2(349, 218)
+[node name="AngleConnector5" type="Sprite2D" parent="Background/WiresDeco/Node2D"]
+position = Vector2(421, 190)
 rotation = -1.5708
 texture = ExtResource("2_bdvtj")
 flip_v = true
@@ -151,6 +164,17 @@ _connector_down = true
 
 [node name="CPU" parent="Sockets" instance=ExtResource("6_6uifc")]
 position = Vector2(336, 243)
+
+[node name="Paths" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Paths"]
+curve = SubResource("Curve2D_w0x51")
+script = ExtResource("7_8calf")
+_wait_time = null
+_probability_of_spawn = null
+
+[node name="Wave1" type="Node" parent="Paths/Path2D"]
+script = ExtResource("8_u4k0c")
 
 [node name="PostProcessing" type="Node2D" parent="."]
 z_index = 1000
