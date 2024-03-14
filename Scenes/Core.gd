@@ -3,6 +3,8 @@ extends Node
 signal on_balance_changed
 
 var _sats:int = 200 # sats = satoshi
+var current_level:Node
+
 
 func get_sats_balance() -> int:
 	return _sats
