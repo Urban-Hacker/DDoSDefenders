@@ -27,12 +27,19 @@ script = ExtResource("1_y7rm8")
 _level_name = "Probation Period: First Week"
 _author = "Urban Hacker"
 _official_level = true
-_waves = 1
+_waves = 2
 
 [node name="Waves" type="Node" parent="."]
 
 [node name="Wave1" type="Node" parent="Waves"]
 script = ExtResource("8_u4k0c")
+_quantity_of_ennemies = 2
+_cooldown_between_spawn = 2.5
+
+[node name="Wave2" type="Node" parent="Waves"]
+script = ExtResource("8_u4k0c")
+_quantity_of_ennemies = 5
+_cooldown_between_spawn = 2.5
 
 [node name="Ambiance" type="CanvasModulate" parent="."]
 color = Color(0.596078, 0.337255, 0.992157, 1)
@@ -92,7 +99,7 @@ rotation = 1.5708
 texture = ExtResource("1_ign0g")
 
 [node name="VerticalConnector8" type="Sprite2D" parent="Background/WiresDeco"]
-position = Vector2(325, 74)
+position = Vector2(325, 72)
 rotation = 1.5708
 texture = ExtResource("1_ign0g")
 
@@ -108,6 +115,13 @@ position = Vector2(297, 192)
 rotation = -1.5708
 texture = ExtResource("2_bdvtj")
 flip_v = true
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+offset_left = 333.0
+offset_top = 145.0
+offset_right = 347.0
+offset_bottom = 159.0
+color = Color(0.0117189, 0.0312505, 0.156802, 1)
 
 [node name="Wires" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -192,13 +206,14 @@ position = Vector2(336, 243)
 [node name="Path2D" type="Path2D" parent="Paths"]
 curve = SubResource("Curve2D_w0x51")
 script = ExtResource("7_8calf")
-_active_waves = Array[bool]([false])
+_active_waves = Array[bool]([false, true])
 
 [node name="Path2D2" type="Path2D" parent="Paths"]
 position = Vector2(-25.0981, 0)
 scale = Vector2(1.07843, 1)
 curve = SubResource("Curve2D_15vaf")
 script = ExtResource("7_8calf")
+_active_waves = Array[bool]([true, false])
 
 [node name="PostProcessing" type="Node2D" parent="."]
 visible = false

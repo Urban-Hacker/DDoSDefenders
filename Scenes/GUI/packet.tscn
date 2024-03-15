@@ -41,7 +41,7 @@ vertical_alignment = 1
 [node name="PointLight2D" type="PointLight2D" parent="Widget"]
 energy = 0.1
 texture = ExtResource("3_iqc1r")
-texture_scale = 0.1
+texture_scale = 0.2
 
 [node name="Range" type="Area2D" parent="."]
 metadata/is_enemy_area = true

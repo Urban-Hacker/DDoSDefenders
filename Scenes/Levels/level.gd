@@ -3,9 +3,10 @@ extends Node2D
 @export var _level_name:String
 @export var _author:String
 @export var _official_level:bool
-@export var _waves:int
+@export var _waves:int = 1
 
 var _enemy_creator:Timer
+var _switch_to_next_wave:Timer
 var _current_wave:int
 
 func _init():
@@ -16,12 +17,19 @@ func _ready():
 	$PostProcessing.show()
 	
 	_current_wave = 1
+
 	_enemy_creator = Timer.new()
-	
 	_enemy_creator.timeout.connect(_on_enemy_creator_timeout)
 	_enemy_creator.wait_time = 0.5
 	_enemy_creator.autostart = true
+	_enemy_creator.one_shot = true
 	add_child(_enemy_creator)
+	
+	_switch_to_next_wave = Timer.new()
+	_switch_to_next_wave.timeout.connect(_on_switch_to_next_wave_timeout)
+	_switch_to_next_wave.autostart = false
+	_switch_to_next_wave.one_shot = true
+	add_child(_switch_to_next_wave)
 
 func _on_enemy_creator_timeout():
 	var wave = get_node("Waves/Wave" + str(_current_wave))
@@ -29,6 +37,16 @@ func _on_enemy_creator_timeout():
 		var spawn = get_spawn_point()
 		spawn.create_packet()
 		wave.enemy_created()
+	else:
+		if _current_wave != _waves:
+			_switch_to_next_wave.start(wave.get_cooldown_before_next_wave())
+	_enemy_creator.stop()
+	_enemy_creator.start(wave.get_cooldown())
+
+func _on_switch_to_next_wave_timeout():
+	print("next wave")
+	_switch_to_next_wave.stop()
+	_current_wave += 1
 
 func _self_tests():
 	assert(get_node("Ambiance") != null)
