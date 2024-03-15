@@ -8,6 +8,7 @@ var _clock:int = 32
 
 var _subtractor_cooldown:float = 1.0
 var _shift_right_cooldown:float = 0.5
+var _memory_cooldown:float = 3.0
 
 func get_price(type:Enum.ChipTypes, level:int) -> int:
 	var price = 0
@@ -34,4 +35,6 @@ func get_cooldown_time(type:Enum.ChipTypes) -> float:
 			cooldown = _subtractor_cooldown
 		Enum.ChipTypes.shift_right:
 			cooldown = _shift_right_cooldown
+		Enum.ChipTypes.memory:
+			cooldown = _memory_cooldown
 	return cooldown

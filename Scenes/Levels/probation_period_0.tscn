@@ -116,7 +116,7 @@ rotation = -1.5708
 texture = ExtResource("2_bdvtj")
 flip_v = true
 
-[node name="ColorRect" type="ColorRect" parent="Background"]
+[node name="WireCache" type="ColorRect" parent="Background"]
 offset_left = 333.0
 offset_top = 145.0
 offset_right = 347.0

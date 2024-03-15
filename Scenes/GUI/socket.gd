@@ -62,7 +62,7 @@ func _set_new_type():
 	
 	if _current_type == Enum.ChipTypes.memory:
 		$Types/Memory.show()
-		$Cooldown.wait_time = 5.0
+		$Cooldown.wait_time = $Prices.get_cooldown_time(Enum.ChipTypes.memory)
 	
 	if _current_type == Enum.ChipTypes.accumulator:
 		$Types/Accumulator.show()
