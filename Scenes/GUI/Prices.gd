@@ -6,7 +6,7 @@ var _accumulator:int = 10
 var _memory:int = 12
 var _clock:int = 32 
 
-var _subtractor_cooldown:float = 0.1
+var _subtractor_cooldown:float = 1.0
 var _shift_right_cooldown:float = 0.5
 
 func get_price(type:Enum.ChipTypes, level:int) -> int:
