@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c52pqwtvyipib"]
+[gd_scene load_steps=23 format=3 uid="uid://c52pqwtvyipib"]
 
 [ext_resource type="Texture2D" uid="uid://t0nhwxo8sr5v" path="res://Assets/road_city.png" id="1_2ajb2"]
 [ext_resource type="Texture2D" uid="uid://um4mufx4gebq" path="res://Assets/building_city.png" id="2_5iesl"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cd43rmh3olkh5" path="res://Scenes/GUI/glow.tscn" id="4_wtwkm"]
 [ext_resource type="Texture2D" uid="uid://c3oaekh6ipchj" path="res://Assets/map_grid.png" id="5_r72vk"]
 [ext_resource type="Theme" uid="uid://bddpr6qdxh17i" path="res://GUI/lcd_display.tres" id="6_fvk71"]
+[ext_resource type="PackedScene" uid="uid://b2m4cl8ofipxi" path="res://Scenes/GUI/mission_tree.tscn" id="9_wh2rr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iqt1c"]
 texture = ExtResource("1_2ajb2")
@@ -296,3 +297,8 @@ offset_right = 632.0
 offset_bottom = 24.0
 text = "5$ 44⬦"
 horizontal_alignment = 2
+
+[node name="MissionTree" parent="GUI/U" instance=ExtResource("9_wh2rr")]
+layout_mode = 0
+offset_top = 24.0
+offset_bottom = 209.0

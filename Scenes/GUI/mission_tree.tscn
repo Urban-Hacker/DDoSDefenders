@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2m4cl8ofipxi"]
+
+[ext_resource type="Theme" uid="uid://bddpr6qdxh17i" path="res://GUI/lcd_display.tres" id="1_b7ami"]
+
+[node name="MissionTree" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 151.0
+offset_bottom = 185.0
+theme = ExtResource("1_b7ami")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 122.0
+offset_bottom = 31.0
+text = "Probation Period:"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 192.0
+offset_bottom = 56.0
+text = "First day"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 192.0
+offset_bottom = 88.0
+text = "Second Day"

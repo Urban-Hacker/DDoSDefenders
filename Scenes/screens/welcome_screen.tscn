@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccd6wm33lhp57"]
+[gd_scene load_steps=7 format=3 uid="uid://ccd6wm33lhp57"]
 
 [ext_resource type="Texture2D" uid="uid://dxqhjc373uk0v" path="res://Assets/logo.png" id="1_6pn0b"]
 [ext_resource type="Theme" uid="uid://bddpr6qdxh17i" path="res://GUI/lcd_display.tres" id="1_33hae"]
 [ext_resource type="Script" path="res://Scenes/screens/welcome_screen.gd" id="1_itfhu"]
 [ext_resource type="Texture2D" uid="uid://dttcnrovc676q" path="res://Assets/Lightmask.png" id="2_82x16"]
+[ext_resource type="PackedScene" uid="uid://c6ilfbo5g2hpx" path="res://Scenes/GUI/terminal.tscn" id="5_r4ul4"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bohnx"]
 blend_mode = 1
@@ -79,27 +80,27 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Changelog" type="Control" parent="GUI"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI/Changelog"]
+[node name="Terminal" parent="GUI/Changelog" instance=ExtResource("5_r4ul4")]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 16.0
-offset_right = 496.0
-offset_bottom = 344.0
-bbcode_enabled = true
-text = "Changelog:
-==========
-Current Version: 1.0
+offset_left = 160.0
+offset_top = 8.0
+offset_right = 512.0
+offset_bottom = 336.0
 
+[node name="Label" type="Label" parent="GUI/Changelog"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 4.0
+offset_right = 105.0
+offset_bottom = 21.0
+text = "Bob"
 
-"
-
-[node name="VersionButton" type="Button" parent="GUI"]
+[node name="ChangelogButton" type="Button" parent="GUI"]
 layout_mode = 0
 offset_left = 512.0
 offset_top = 336.0
@@ -119,4 +120,5 @@ offset_right = 384.0
 offset_bottom = 323.0
 text = "Login"
 
+[connection signal="pressed" from="GUI/ChangelogButton" to="." method="_on_changelog_button_pressed"]
 [connection signal="pressed" from="GUI/LoginButton" to="." method="_on_login_button_pressed"]

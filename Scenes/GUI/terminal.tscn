@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6ilfbo5g2hpx"]
+
+[ext_resource type="Script" path="res://Scenes/GUI/Terminal.gd" id="1_abyyx"]
+[ext_resource type="Theme" uid="uid://bddpr6qdxh17i" path="res://GUI/lcd_display.tres" id="1_byq7c"]
+[ext_resource type="FontFile" uid="uid://bwfj1j83termw" path="res://GUI/ProggyTiny.ttf" id="2_a1mgo"]
+
+[node name="Terminal" type="RichTextLabel"]
+offset_right = 352.0
+offset_bottom = 328.0
+theme = ExtResource("1_byq7c")
+theme_override_fonts/normal_font = ExtResource("2_a1mgo")
+bbcode_enabled = true
+text = "[u]# New features:[/u] 
+[ul]Add base of the game (socket, chips, packets, wave generator) 
+ First level[/ul] 
+ [u]# Misc:[/u] 
+ [ul]Test with shaders for the City and Levels 
+ h[/ul] 
+
+
+
+"
+script = ExtResource("1_abyyx")
+
+[node name="Bauds" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Bauds" to="." method="_on_bauds_timeout"]
