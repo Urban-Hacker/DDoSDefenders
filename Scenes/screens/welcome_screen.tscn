@@ -1,11 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccd6wm33lhp57"]
+[gd_scene load_steps=9 format=3 uid="uid://ccd6wm33lhp57"]
 
 [ext_resource type="Texture2D" uid="uid://dxqhjc373uk0v" path="res://Assets/logo.png" id="1_6pn0b"]
 [ext_resource type="Theme" uid="uid://bddpr6qdxh17i" path="res://GUI/lcd_display.tres" id="1_33hae"]
 [ext_resource type="Script" path="res://Scenes/screens/welcome_screen.gd" id="1_itfhu"]
 [ext_resource type="Texture2D" uid="uid://dttcnrovc676q" path="res://Assets/Lightmask.png" id="2_82x16"]
-[ext_resource type="PackedScene" uid="uid://c6ilfbo5g2hpx" path="res://Scenes/GUI/terminal.tscn" id="5_r4ul4"]
+[ext_resource type="PackedScene" uid="uid://cve107pf55go" path="res://Scenes/GUI/changelog_menu.tscn" id="5_n1gdx"]
 [ext_resource type="PackedScene" uid="uid://cd43rmh3olkh5" path="res://Scenes/GUI/glow.tscn" id="6_8w36f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aicyt"]
+bg_color = Color(0, 0, 0, 0.458824)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bohnx"]
 blend_mode = 1
@@ -49,6 +52,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("1_33hae")
 
+[node name="Escape" type="Button" parent="GUI"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_aicyt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_aicyt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_aicyt")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_aicyt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_aicyt")
+
 [node name="Logo" type="Control" parent="GUI"]
 anchors_preset = 0
 offset_right = 40.0
@@ -81,28 +94,7 @@ text = "Defend, Deter, Dominate!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Changelog" type="Control" parent="GUI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="GUI/Changelog"]
-layout_mode = 0
-offset_left = 152.0
-offset_top = 8.0
-offset_right = 488.0
-offset_bottom = 352.0
-color = Color(0.27451, 0.266667, 0.407843, 1)
-
-[node name="Terminal" parent="GUI/Changelog" instance=ExtResource("5_r4ul4")]
-layout_mode = 0
-offset_left = 160.0
-offset_top = 16.0
-offset_right = 480.0
-offset_bottom = 312.0
-text = "Changelog: 0x0
-"
+[node name="ChangelogMenu" parent="GUI" instance=ExtResource("5_n1gdx")]
 
 [node name="Buttons" type="Control" parent="GUI"]
 anchors_preset = 0
@@ -129,13 +121,9 @@ offset_right = 384.0
 offset_bottom = 323.0
 text = "Login"
 
-[node name="Escape" type="Button" parent="GUI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Glow" parent="." instance=ExtResource("6_8w36f")]
 visible = false
 
+[connection signal="button_down" from="GUI/Escape" to="." method="_on_escape_button_down"]
 [connection signal="pressed" from="GUI/Buttons/ChangelogButton" to="." method="_on_changelog_button_pressed"]
 [connection signal="pressed" from="GUI/Buttons/LoginButton" to="." method="_on_login_button_pressed"]

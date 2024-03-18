@@ -65,3 +65,19 @@ func markdown_to_bbcode(markdown: String) -> String:
 		bbcode += "[/ul]\n"
 
 	return bbcode.strip_edges()
+
+func get_in_folder(path) -> Array:
+	var dir = DirAccess.open(path)
+	var files = []
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if dir.current_is_dir():
+				pass
+			else:
+				files.append(file_name)
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")
+	return files
