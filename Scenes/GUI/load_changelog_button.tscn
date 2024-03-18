@@ -1,11 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://6skyrsdw0of1"]
+[gd_scene load_steps=3 format=3 uid="uid://6skyrsdw0of1"]
 
 [ext_resource type="Theme" uid="uid://bddpr6qdxh17i" path="res://GUI/lcd_display.tres" id="1_2f3o6"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ehg8g"]
+blend_mode = 1
+light_mode = 1
+
 [node name="LoadChangelogButton" type="Button"]
+material = SubResource("CanvasItemMaterial_ehg8g")
 offset_right = 72.0
 offset_bottom = 24.0
 theme = ExtResource("1_2f3o6")
+theme_override_colors/font_color = Color(0.0196078, 0.533333, 0.454902, 1)
+theme_override_colors/font_pressed_color = Color(0.0352941, 0.807843, 0.690196, 1)
+theme_override_colors/font_hover_color = Color(0.0352941, 0.807843, 0.690196, 1)
+theme_override_colors/font_focus_color = Color(0.0352941, 0.807843, 0.690196, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.0352941, 0.807843, 0.690196, 1)
 text = "> 0x0"
 flat = true
 alignment = 0
