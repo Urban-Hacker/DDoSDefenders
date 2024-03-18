@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccd6wm33lhp57"]
+[gd_scene load_steps=8 format=3 uid="uid://ccd6wm33lhp57"]
 
 [ext_resource type="Texture2D" uid="uid://dxqhjc373uk0v" path="res://Assets/logo.png" id="1_6pn0b"]
 [ext_resource type="Theme" uid="uid://bddpr6qdxh17i" path="res://GUI/lcd_display.tres" id="1_33hae"]
 [ext_resource type="Script" path="res://Scenes/screens/welcome_screen.gd" id="1_itfhu"]
 [ext_resource type="Texture2D" uid="uid://dttcnrovc676q" path="res://Assets/Lightmask.png" id="2_82x16"]
 [ext_resource type="PackedScene" uid="uid://c6ilfbo5g2hpx" path="res://Scenes/GUI/terminal.tscn" id="5_r4ul4"]
+[ext_resource type="PackedScene" uid="uid://cd43rmh3olkh5" path="res://Scenes/GUI/glow.tscn" id="6_8w36f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bohnx"]
 blend_mode = 1
@@ -14,7 +15,7 @@ light_mode = 1
 script = ExtResource("1_itfhu")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.0156863, 0.207843, 0.329412, 1)
+color = Color(0.0941176, 0.321569, 0.352941, 1)
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 3
@@ -52,6 +53,7 @@ theme = ExtResource("1_33hae")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_lock_ = true
 
 [node name="Sprite" type="Sprite2D" parent="GUI/Logo"]
 position = Vector2(317, 163)
@@ -85,16 +87,29 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="ColorRect" type="ColorRect" parent="GUI/Changelog"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 8.0
+offset_right = 488.0
+offset_bottom = 352.0
+color = Color(0.27451, 0.266667, 0.407843, 1)
+
 [node name="Terminal" parent="GUI/Changelog" instance=ExtResource("5_r4ul4")]
 layout_mode = 0
 offset_left = 160.0
-offset_top = 8.0
-offset_right = 512.0
-offset_bottom = 336.0
+offset_top = 16.0
+offset_right = 480.0
+offset_bottom = 312.0
 text = "Changelog: 0x0
 "
 
-[node name="ChangelogButton" type="Button" parent="GUI"]
+[node name="Buttons" type="Control" parent="GUI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ChangelogButton" type="Button" parent="GUI/Buttons"]
 layout_mode = 0
 offset_left = 512.0
 offset_top = 336.0
@@ -106,7 +121,7 @@ text = "Ver: 0x0"
 flat = true
 alignment = 2
 
-[node name="LoginButton" type="Button" parent="GUI"]
+[node name="LoginButton" type="Button" parent="GUI/Buttons"]
 layout_mode = 0
 offset_left = 256.0
 offset_top = 292.0
@@ -114,5 +129,13 @@ offset_right = 384.0
 offset_bottom = 323.0
 text = "Login"
 
-[connection signal="pressed" from="GUI/ChangelogButton" to="." method="_on_changelog_button_pressed"]
-[connection signal="pressed" from="GUI/LoginButton" to="." method="_on_login_button_pressed"]
+[node name="Escape" type="Button" parent="GUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Glow" parent="." instance=ExtResource("6_8w36f")]
+visible = false
+
+[connection signal="pressed" from="GUI/Buttons/ChangelogButton" to="." method="_on_changelog_button_pressed"]
+[connection signal="pressed" from="GUI/Buttons/LoginButton" to="." method="_on_login_button_pressed"]
