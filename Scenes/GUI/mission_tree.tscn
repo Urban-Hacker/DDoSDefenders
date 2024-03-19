@@ -21,7 +21,7 @@ text = "Probation Period:"
 layout_mode = 0
 offset_left = 8.0
 offset_top = 32.0
-offset_right = 192.0
+offset_right = 136.0
 offset_bottom = 56.0
 text = "First day"
 
@@ -29,6 +29,6 @@ text = "First day"
 layout_mode = 0
 offset_left = 8.0
 offset_top = 64.0
-offset_right = 192.0
+offset_right = 136.0
 offset_bottom = 88.0
 text = "Second Day"

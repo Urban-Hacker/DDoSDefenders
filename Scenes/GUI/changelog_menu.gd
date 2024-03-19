@@ -6,6 +6,7 @@ func _ready():
 	var scene = preload("res://Scenes/GUI/load_changelog_button.tscn")
 	
 	var files = Core.get_in_folder("res://Changelogs")
+	files.reverse()
 	for file in files:
 		var btn = scene.instantiate()
 		btn.connect("pressed", _on_load_changelog.bind(file))
