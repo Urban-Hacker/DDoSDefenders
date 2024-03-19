@@ -18,9 +18,12 @@ func render(version_string, changelog_file, previous_version=false) -> void:
 	$Terminal.clear_buffer()
 	$Terminal.load_file("res://ASCIIArt/logo.txt")
 	if previous_version:
-		$Terminal.add_line("[color=red]/!\\ Loading information from old version[/color]\n\n")
+		$Terminal.add_line("[color=red]/!\\ Loading information from old version[/color]\n")
 	else:
-		$Terminal.add_line("Current Version: [color=#09d5b7]" + version_string + "[/color]\n\n")
+		$Terminal.add_line("Current Version: [color=#09d5b7]" + version_string + "[/color]\n")
+	
+	$Terminal.add_progress_bar("Loading " + changelog_file)
+	$Terminal.add_line("\n")
 	$Terminal.load_file("res://Changelogs/" + changelog_file, true)
 
 func _on_load_changelog(file_to_load):
