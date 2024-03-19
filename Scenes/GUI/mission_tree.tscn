@@ -23,12 +23,14 @@ offset_left = 8.0
 offset_top = 32.0
 offset_right = 136.0
 offset_bottom = 56.0
-text = "First day"
+text = " > First day"
+alignment = 0
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 64.0
+offset_top = 60.0
 offset_right = 136.0
-offset_bottom = 88.0
-text = "Second Day"
+offset_bottom = 84.0
+text = " > Second Day"
+alignment = 0
