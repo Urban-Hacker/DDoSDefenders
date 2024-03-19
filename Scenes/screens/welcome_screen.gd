@@ -9,6 +9,7 @@ var _changelog_file:String
 var _current_state:_STATES
 
 func _ready():
+	Core.on_escape.connect(_on_escape)
 	_version_main = ProjectSettings.get("application/config/version_main")
 	_version_patch =  ProjectSettings.get("application/config/version_patch")
 	_version_string = str(_version_main) + "." + str(_version_patch)
@@ -21,12 +22,12 @@ func _ready():
 func _change_state(state:_STATES):
 	_current_state = state
 	$GUI/ChangelogMenu.hide()
-	$GUI/Logo.hide()
+	$GUI/LogoMenu.hide()
 	$GUI/Buttons.hide()
 	$GUI/Escape.hide()
 	
 	if _current_state == _STATES.welcome:
-		$GUI/Logo.show()
+		$GUI/LogoMenu.show()
 		$GUI/Buttons.show()
 	
 	if _current_state == _STATES.changelog:
@@ -44,4 +45,7 @@ func _on_changelog_button_pressed():
 
 
 func _on_escape_button_down():
+	_on_escape()
+
+func _on_escape():
 	_change_state(_STATES.welcome)
