@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccd6wm33lhp57"]
+[gd_scene load_steps=11 format=3 uid="uid://ccd6wm33lhp57"]
 
 [ext_resource type="Texture2D" uid="uid://dxqhjc373uk0v" path="res://Assets/logo.png" id="1_6pn0b"]
 [ext_resource type="Theme" uid="uid://bddpr6qdxh17i" path="res://GUI/lcd_display.tres" id="1_33hae"]
 [ext_resource type="Script" path="res://Scenes/screens/welcome_screen.gd" id="1_itfhu"]
 [ext_resource type="Texture2D" uid="uid://dttcnrovc676q" path="res://Assets/Lightmask.png" id="2_82x16"]
+[ext_resource type="PackedScene" uid="uid://chp8r6cstpfgs" path="res://Scenes/GUI/background_grid.tscn" id="4_qnr2c"]
+[ext_resource type="FontFile" uid="uid://fxirdlxe364e" path="res://GUI/ReadyPlayerOne.ttf" id="5_b4sum"]
 [ext_resource type="PackedScene" uid="uid://cve107pf55go" path="res://Scenes/GUI/changelog_menu.tscn" id="5_n1gdx"]
 [ext_resource type="PackedScene" uid="uid://cd43rmh3olkh5" path="res://Scenes/GUI/glow.tscn" id="6_8w36f"]
 
@@ -45,6 +47,8 @@ energy = 1.5
 texture = ExtResource("2_82x16")
 texture_scale = 0.3
 
+[node name="BackgroundGrid" parent="Background" instance=ExtResource("4_qnr2c")]
+
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -53,6 +57,7 @@ offset_bottom = 40.0
 theme = ExtResource("1_33hae")
 
 [node name="Escape" type="Button" parent="GUI"]
+visible = false
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
@@ -62,17 +67,18 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_aicyt")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_aicyt")
 theme_override_styles/focus = SubResource("StyleBoxFlat_aicyt")
 
-[node name="Logo" type="Control" parent="GUI"]
+[node name="LogoMenu" type="Control" parent="GUI"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
-[node name="Sprite" type="Sprite2D" parent="GUI/Logo"]
+[node name="Sprite" type="Sprite2D" parent="GUI/LogoMenu"]
 position = Vector2(317, 163)
 texture = ExtResource("1_6pn0b")
 
-[node name="ColorRect" type="ColorRect" parent="GUI/Logo"]
+[node name="ColorRect" type="ColorRect" parent="GUI/LogoMenu"]
 layout_mode = 0
 offset_top = 192.0
 offset_right = 640.0
@@ -80,7 +86,7 @@ offset_bottom = 216.0
 color = Color(0.0507973, 0.168536, 0.270634, 1)
 metadata/_edit_lock_ = true
 
-[node name="Slogan" type="Label" parent="GUI/Logo"]
+[node name="Slogan" type="Label" parent="GUI/LogoMenu"]
 material = SubResource("CanvasItemMaterial_bohnx")
 layout_mode = 0
 offset_left = 192.0
@@ -90,11 +96,15 @@ offset_bottom = 216.0
 theme_override_colors/font_color = Color(0.937255, 0, 0.137255, 1)
 theme_override_colors/font_outline_color = Color(0.858824, 0, 0.470588, 0.529412)
 theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("5_b4sum")
 text = "Defend, Deter, Dominate!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ChangelogMenu" parent="GUI" instance=ExtResource("5_n1gdx")]
+visible = false
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Buttons" type="Control" parent="GUI"]
 anchors_preset = 0

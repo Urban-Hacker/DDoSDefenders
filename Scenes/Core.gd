@@ -1,6 +1,7 @@
 extends Node
 
 signal on_balance_changed
+signal on_escape
 
 var _sats:int = 200 # sats = satoshi
 var current_level:Node
@@ -80,4 +81,6 @@ func get_in_folder(path) -> Array:
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
+
+	files.sort()
 	return files
