@@ -22,6 +22,7 @@ config/version_patch=3
 UnderscoreMeansPrivate="*res://addons/UnderscoreMeansPrivate/PrivateProtection.gd"
 Core="*res://Scenes/core.tscn"
 SaveSystem="*res://addons/save_system/save_system.gd"
+QuestSystem="*res://addons/quest_system/quest_manager.gd"
 
 [debug]
 
@@ -37,7 +38,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/UnderscoreMeansPrivate/plugin.cfg", "res://addons/save_system/plugin.cfg")
+enabled=PackedStringArray("res://addons/UnderscoreMeansPrivate/plugin.cfg", "res://addons/quest_system/plugin.cfg", "res://addons/save_system/plugin.cfg")
 
 [rendering]
 
