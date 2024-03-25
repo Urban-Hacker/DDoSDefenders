@@ -4,14 +4,9 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	_create_quests("Probation Period", 3)
-	#_create_quests("An easy start", 2)
-	#_create_quests("Firewall Fortification", 3)
-	#_create_quests("Digital Diplomacy", 5)
-	#_create_quests("Sunflare Activation", 10)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	pass
 
