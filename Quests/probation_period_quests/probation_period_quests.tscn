@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnjcva1nhfwor"]
+
+[ext_resource type="Script" path="res://Quests/probation_period_quests/probation_period_quests.gd" id="1_f74pq"]
+[ext_resource type="Script" path="res://Quests/probation_period_quests/DayOne.gd" id="2_t7m80"]
+
+[sub_resource type="Resource" id="Resource_ajh76"]
+script = ExtResource("2_t7m80")
+_smartContracts = 0
+id = 0
+quest_name = ""
+quest_description = ""
+quest_objective = ""
+
+[node name="ProbationPeriodQuests" type="Node"]
+script = ExtResource("1_f74pq")
+DayOneQuest = SubResource("Resource_ajh76")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 14.0
+offset_top = 15.0
+offset_right = 110.0
+offset_bottom = 46.0
+text = "Start Quest"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

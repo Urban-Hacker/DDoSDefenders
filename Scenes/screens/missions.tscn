@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c52pqwtvyipib"]
+[gd_scene load_steps=22 format=3 uid="uid://c52pqwtvyipib"]
 
 [ext_resource type="Texture2D" uid="uid://t0nhwxo8sr5v" path="res://Assets/road_city.png" id="1_2ajb2"]
 [ext_resource type="Texture2D" uid="uid://um4mufx4gebq" path="res://Assets/building_city.png" id="2_5iesl"]
@@ -9,6 +9,7 @@
 [ext_resource type="Theme" uid="uid://bddpr6qdxh17i" path="res://GUI/lcd_display.tres" id="6_fvk71"]
 [ext_resource type="PackedScene" uid="uid://chp8r6cstpfgs" path="res://Scenes/GUI/background_grid.tscn" id="7_tijs0"]
 [ext_resource type="PackedScene" uid="uid://b2m4cl8ofipxi" path="res://Scenes/GUI/mission_tree.tscn" id="9_wh2rr"]
+[ext_resource type="PackedScene" uid="uid://bq3ygellrjcl8" path="res://Scenes/GUI/quests_menu.tscn" id="10_ul2h7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iqt1c"]
 texture = ExtResource("1_2ajb2")
@@ -269,6 +270,7 @@ offset_bottom = 40.0
 theme = ExtResource("6_fvk71")
 
 [node name="ColorRect" type="ColorRect" parent="GUI/U"]
+visible = false
 light_mask = 2
 visibility_layer = 2
 layout_mode = 0
@@ -277,6 +279,7 @@ offset_bottom = 24.0
 color = Color(0, 0, 0, 0.462745)
 
 [node name="ColorRect2" type="ColorRect" parent="GUI/U"]
+visible = false
 layout_mode = 0
 offset_left = 4.0
 offset_top = 28.0
@@ -285,6 +288,7 @@ offset_bottom = 356.0
 color = Color(0.380392, 0.2, 0.427451, 1)
 
 [node name="Label" type="Label" parent="GUI/U"]
+visible = false
 modulate = Color(0.0507973, 0.168536, 0.270634, 1)
 material = SubResource("CanvasItemMaterial_grgft")
 layout_mode = 0
@@ -296,6 +300,7 @@ text = "DDoS Defenders Cyberthreat Map"
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GUI/U"]
+visible = false
 modulate = Color(0.231373, 0.501961, 0.737255, 1)
 material = SubResource("CanvasItemMaterial_grgft")
 layout_mode = 0
@@ -307,9 +312,12 @@ text = "5$ 44⬦"
 horizontal_alignment = 2
 
 [node name="MissionTree" parent="GUI/U" instance=ExtResource("9_wh2rr")]
+visible = false
 layout_mode = 0
 offset_top = 24.0
 offset_bottom = 209.0
+
+[node name="QuestsMenu" parent="GUI/U" instance=ExtResource("10_ul2h7")]
 
 [node name="PointLight2D" type="PointLight2D" parent="GUI"]
 position = Vector2(320, 192)
