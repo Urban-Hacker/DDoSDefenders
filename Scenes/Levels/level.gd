@@ -35,7 +35,7 @@ func _on_enemy_creator_timeout():
 	var wave = get_node("Waves/Wave" + str(_current_wave))
 	if wave.get_quantity_remaining() > 0:
 		var spawn = get_spawn_point()
-		spawn.create_packet()
+		spawn.create_packet(wave)
 		wave.enemy_created()
 	else:
 		if _current_wave != _waves:
