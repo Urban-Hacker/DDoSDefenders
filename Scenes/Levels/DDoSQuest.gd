@@ -13,7 +13,7 @@ func start() -> void:
 func complete() -> void:
 	print("Quest Completed")
 
-func another_cool_function(quest_id):
+func another_cool_function(quest_id) -> void:
 	print(quest_id)
 	if quest_id == self.id:
 		objective_completed = true
