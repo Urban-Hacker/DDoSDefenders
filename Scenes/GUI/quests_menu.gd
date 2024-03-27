@@ -1,24 +1,20 @@
 extends Control
 
-@export var _quest:Quest
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_create_quests("Probation Period", 3)
+	_load_quests("res://Scenes/Levels/probation_period_quests/probation_period_quests.tscn")
 
 
-func _process(delta):
-	pass
-
-
-func _create_quests(title:String, amount:int) -> void:
+func _load_quests(path:String) -> void:
+	var scene = preload("res://Scenes/GUI/quest_button.tscn")
+	var quests_scene = load(path)
+	var quests_data = quests_scene.instantiate()
+	var quests = quests_data.get_quests()
 	#var ttt = Label.new()
 	#ttt.text = title
 	#$ScrollContainer/VBoxContainer.add_child(ttt)
 	
-	for i in range(0, amount):
-		
-		var scene = preload("res://Scenes/GUI/quest_button.tscn")
+	for quest in quests:
 		var btn = scene.instantiate()
-		btn.set_quest(_quest)
+		btn.set_quest(quest)
 		$ScrollContainer/VBoxContainer.add_child(btn)

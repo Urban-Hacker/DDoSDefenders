@@ -1,0 +1,58 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://4bhi58oa5jnf"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_8a5ep"]
+parameter_name = "IconTexture"
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_a8veg"]
+parameter_name = "IconColor"
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_14i7f"]
+function = 15
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_k0ga2"]
+expanded_output_ports = [0]
+source = 5
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_add;
+
+uniform vec4 IconColor : source_color;
+uniform sampler2D IconTexture;
+
+
+
+void fragment() {
+// ColorParameter:3
+	vec4 n_out3p0 = IconColor;
+
+
+	vec4 n_out5p0;
+// Texture2D:5
+	n_out5p0 = texture(IconTexture, UV);
+	float n_out5p4 = n_out5p0.a;
+
+
+// FloatFunc:4
+	float n_out4p0 = round(n_out5p4);
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out3p0.xyz);
+	COLOR.a = n_out4p0;
+
+
+}
+"
+mode = 1
+modes/blend = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_8a5ep")
+nodes/fragment/2/position = Vector2(-740, 340)
+nodes/fragment/3/node = SubResource("VisualShaderNodeColorParameter_a8veg")
+nodes/fragment/3/position = Vector2(-80, 100)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatFunc_14i7f")
+nodes/fragment/4/position = Vector2(80, 260)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture_k0ga2")
+nodes/fragment/5/position = Vector2(-400, 360)
+nodes/fragment/connections = PackedInt32Array(3, 0, 0, 0, 4, 0, 0, 1, 2, 0, 5, 2, 5, 4, 4, 0)

@@ -1,6 +1,6 @@
 extends PathFollow2D
 
-var _random_speed:float = 1.1
+var _speed:float = 1.0
 var _socket_reference_counter:int
 var _ttl:int
 var _level:int
@@ -22,7 +22,7 @@ func _process(delta):
 	refresh()
 
 func _on_move_timeout():
-	progress = progress + _random_speed
+	progress = progress + _speed
 
 func refresh() -> void:
 	$Widget/Label.text = Core.int_to_bin_str(_ttl, _level)
@@ -53,3 +53,6 @@ func getting_attacked_by_shift_right(level:int) -> void:
 
 func getting_attacked_by_memory(level:int) -> void:
 	queue_free()
+
+func set_wave(wave) -> void:
+	_speed = wave.get_average_ennemies_speed()
