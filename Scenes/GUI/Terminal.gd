@@ -26,6 +26,11 @@ func add_line(input:String, rate:float=0.1) -> void:
 	var line = _Line.new(input, rate)
 	_buffer.append(line)
 
+func add_lines(input:String) -> void:
+	var lines = input.split("\n")
+	for line in lines:
+		add_line(line + "\n", 0.1)
+
 func load_file(path:String, parse_markdown=false) -> void:
 	var file = FileAccess.open(path, FileAccess.READ)
 	var content = file.get_as_text()
