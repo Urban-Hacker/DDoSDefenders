@@ -1,12 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bq3ygellrjcl8"]
+[gd_scene load_steps=8 format=3 uid="uid://bq3ygellrjcl8"]
 
 [ext_resource type="Theme" uid="uid://bddpr6qdxh17i" path="res://GUI/lcd_display.tres" id="1_plyia"]
 [ext_resource type="Script" path="res://Scenes/GUI/quests_menu.gd" id="2_brqra"]
 [ext_resource type="PackedScene" uid="uid://c6ilfbo5g2hpx" path="res://Scenes/GUI/terminal.tscn" id="3_vixdp"]
+[ext_resource type="Shader" uid="uid://dkm4nsgs8xvbb" path="res://Shaders/IconPixelRender.tres" id="4_2fqql"]
+[ext_resource type="Texture2D" uid="uid://vmcesjem84jv" path="res://Assets/close-box.png" id="5_oy0lj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0e7e3"]
 blend_mode = 1
 light_mode = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7s7ks"]
+shader = ExtResource("4_2fqql")
+shader_parameter/IconColor = Color(0.0196078, 0.533333, 0.454902, 1)
+shader_parameter/IconTexture = ExtResource("5_oy0lj")
 
 [node name="QuestsMenu" type="Control"]
 layout_mode = 3
@@ -87,3 +94,15 @@ offset_top = 313.0
 offset_right = 624.0
 offset_bottom = 344.0
 text = "Start Mission"
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 32.0
+offset_right = 632.0
+offset_bottom = 56.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CloseButton"]
+material = SubResource("ShaderMaterial_7s7ks")
+position = Vector2(12, 12)
+texture = ExtResource("5_oy0lj")

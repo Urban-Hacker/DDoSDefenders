@@ -82,16 +82,16 @@ offset_bottom = 348.0
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="."]
+[node name="CloseButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 464.0
 offset_top = 8.0
 offset_right = 488.0
 offset_bottom = 32.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Button"]
+[node name="Sprite2D" type="Sprite2D" parent="CloseButton"]
 material = SubResource("ShaderMaterial_ahwgg")
 position = Vector2(12, 12)
 texture = ExtResource("5_vt214")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

@@ -30,5 +30,5 @@ func _on_load_changelog(file_to_load):
 	render(_version_string, file_to_load, true)
 
 
-func _on_button_pressed():
+func _on_close_button_pressed():
 	Core.on_escape.emit()
