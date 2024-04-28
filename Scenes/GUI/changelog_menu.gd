@@ -16,7 +16,7 @@ func _ready():
 func render(version_string, changelog_file, previous_version=false) -> void:
 	_version_string = version_string
 	$Terminal.clear_buffer()
-	$Terminal.load_file("res://ASCIIArt/logo.txt")
+	$Terminal.load_file("res://ASCIIArt/logo_changelog.txt")
 	if previous_version:
 		$Terminal.add_line("[color=red]/!\\ Information from a different version[/color]\n\n")
 	else:

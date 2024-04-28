@@ -77,4 +77,13 @@ layout_mode = 0
 offset_left = 212.0
 offset_top = 64.0
 offset_right = 624.0
+offset_bottom = 304.0
+theme_override_colors/default_color = Color(0.0196078, 0.533333, 0.454902, 1)
+
+[node name="StartMission" type="Button" parent="."]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 313.0
+offset_right = 624.0
 offset_bottom = 344.0
+text = "Start Mission"

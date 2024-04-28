@@ -102,6 +102,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ChangelogMenu" parent="GUI" instance=ExtResource("5_n1gdx")]
+visible = false
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -125,9 +126,9 @@ alignment = 2
 [node name="LoginButton" type="Button" parent="GUI/Buttons"]
 layout_mode = 0
 offset_left = 256.0
-offset_top = 292.0
+offset_top = 288.0
 offset_right = 384.0
-offset_bottom = 323.0
+offset_bottom = 319.0
 text = "Login"
 
 [node name="Glow" parent="." instance=ExtResource("6_8w36f")]
