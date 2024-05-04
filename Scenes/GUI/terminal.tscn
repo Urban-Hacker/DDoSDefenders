@@ -20,6 +20,7 @@ text = "[u]# New features:[/u]
 
 
 "
+scroll_following = true
 script = ExtResource("1_abyyx")
 
 [node name="Bauds" type="Timer" parent="."]

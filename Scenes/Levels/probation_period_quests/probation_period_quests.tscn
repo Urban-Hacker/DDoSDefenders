@@ -6,20 +6,40 @@
 
 [sub_resource type="Resource" id="Resource_ajh76"]
 script = ExtResource("3_14bcp")
-_smartContracts = null
+_smartContracts = 0
 _level = ExtResource("2_le330")
-id = null
+id = 0
 quest_name = "First day of work"
-quest_description = null
-quest_objective = null
+quest_description = "Welcome aboard! We're excited to have you join our team.
+
+DDoS attacks flood networks with malicious data,
+visualized as binary code, aiming to overwhelm the CPU core.
+
+To defend against these attacks,
+click the empty slot to install a defense chip.
+
+The simplest chip, \"SUB 1\" reduces
+each packet's TTL (Time To Live) by 1.
+A packet is neutralized once its TTL becomes negative.
+
+Your objectives are:
+[objectives]
+
+Together, let's achieve great success!
+
+Alex Mercer
+Head of Security Operations
+DDoS Defenders"
+quest_objective = "* Learn the basic (+20$)
+* Load (+10$)"
 
 [sub_resource type="Resource" id="Resource_2expf"]
 script = ExtResource("3_14bcp")
-_smartContracts = null
+_smartContracts = 0
 id = 1
 quest_name = "Second day of work"
-quest_description = null
-quest_objective = null
+quest_description = ""
+quest_objective = ""
 
 [node name="ProbationPeriodQuests" type="Node"]
 script = ExtResource("1_u8c6s")

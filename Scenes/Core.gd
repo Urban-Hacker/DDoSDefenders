@@ -17,6 +17,8 @@ func record_transaction(value:int) -> bool:
 	on_balance_changed.emit()
 	return true
 
+func get_player_name() -> String:
+	return "Alice"
 
 func int_to_bin_str(value:int, level:int) -> String:
 	var binary_str = ""

@@ -126,9 +126,9 @@ alignment = 2
 [node name="LoginButton" type="Button" parent="GUI/Buttons"]
 layout_mode = 0
 offset_left = 256.0
-offset_top = 292.0
+offset_top = 288.0
 offset_right = 384.0
-offset_bottom = 323.0
+offset_bottom = 319.0
 text = "Login"
 
 [node name="Glow" parent="." instance=ExtResource("6_8w36f")]

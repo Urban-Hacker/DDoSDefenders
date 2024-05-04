@@ -23,8 +23,15 @@ script = ExtResource("2_13q1x")
 layout_mode = 0
 offset_right = 176.0
 offset_bottom = 24.0
-text = "     a"
 alignment = 0
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 8.0
+offset_right = 168.0
+offset_bottom = 22.0
+text = "[label]"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_t262k")
