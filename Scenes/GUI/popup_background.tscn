@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://rdu2tbrg5cqw"]
+
+[ext_resource type="Theme" uid="uid://bddpr6qdxh17i" path="res://GUI/lcd_display.tres" id="1_1gpfo"]
+[ext_resource type="Script" path="res://Scenes/GUI/popup_background.gd" id="1_rwucf"]
+[ext_resource type="Shader" uid="uid://dkm4nsgs8xvbb" path="res://Shaders/IconPixelRender.tres" id="3_uxquq"]
+[ext_resource type="Texture2D" uid="uid://vmcesjem84jv" path="res://Assets/close-box.png" id="4_jylr5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ihhe"]
+shader = ExtResource("3_uxquq")
+shader_parameter/IconColor = Color(0.0196078, 0.533333, 0.454902, 1)
+shader_parameter/IconTexture = ExtResource("4_jylr5")
+
+[node name="PopupBackground" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 128.0
+theme = ExtResource("1_1gpfo")
+script = ExtResource("1_rwucf")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+color = Color(0.27451, 0.266667, 0.407843, 1)
+
+[node name="Header" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 24.0
+color = Color(0.160784, 0.243137, 0.282353, 1)
+
+[node name="HeaderTitle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 88.0
+offset_bottom = 26.0
+text = "[Title]"
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 104.0
+offset_right = 128.0
+offset_bottom = 24.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CloseButton"]
+material = SubResource("ShaderMaterial_0ihhe")
+position = Vector2(12, 12)
+texture = ExtResource("4_jylr5")
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
