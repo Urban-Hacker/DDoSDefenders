@@ -12,7 +12,7 @@ config_version=5
 
 config/name="DDoS Defenders"
 run/main_scene="res://Scenes/screens/welcome_screen.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 config/version_main=0
 config/version_patch=4

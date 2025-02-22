@@ -25,6 +25,6 @@ func _on_load_quest_description(btn):
 	print("---")
 	$Terminal.clear_buffer()
 	var quest = btn.get_quest()
-	#$Terminal.load_file("res://ASCIIArt/logo_mail.txt")
+	$Terminal.load_file("res://ASCIIArt/logo_mail.txt")
 	$Terminal.add_lines(btn.get_quest().get_mail())
 	$Terminal.add_line("\n")
