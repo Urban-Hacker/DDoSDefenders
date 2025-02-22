@@ -93,7 +93,7 @@ offset_left = 520.0
 offset_top = 313.0
 offset_right = 624.0
 offset_bottom = 344.0
-text = "Let’s go"
+text = "Start Quest"
 
 [node name="CloseButton" type="Button" parent="."]
 layout_mode = 0
