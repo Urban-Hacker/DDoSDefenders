@@ -1,14 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpci6qhatd6cj"]
+[gd_scene load_steps=12 format=3 uid="uid://x2vvq7rpqnwk"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_mxfo8"]
-[ext_resource type="Script" path="res://Scenes/Levels/wave.gd" id="2_3dn8p"]
-[ext_resource type="Texture2D" uid="uid://chj8o3aewsylw" path="res://Assets/wire_straight.png" id="3_t0412"]
-[ext_resource type="Texture2D" uid="uid://ksor2ek4f62g" path="res://Assets/wire_angle_diagonal.png" id="4_5u2ow"]
-[ext_resource type="Texture2D" uid="uid://cwhgje5n55gow" path="res://Assets/wire_entry_point.png" id="5_s1fac"]
-[ext_resource type="PackedScene" uid="uid://bedy3pqyxb5of" path="res://Scenes/GUI/socket.tscn" id="6_dpxmn"]
-[ext_resource type="PackedScene" uid="uid://h4kttepilw52" path="res://Scenes/GUI/cpu.tscn" id="7_l5rsi"]
-[ext_resource type="Script" path="res://Scenes/Levels/path.gd" id="8_gv4lp"]
-[ext_resource type="PackedScene" uid="uid://cd43rmh3olkh5" path="res://Scenes/GUI/glow.tscn" id="9_kqjlv"]
+[ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_7evfh"]
+[ext_resource type="Script" path="res://Scenes/Levels/wave.gd" id="2_gv0w0"]
+[ext_resource type="Texture2D" uid="uid://chj8o3aewsylw" path="res://Assets/wire_straight.png" id="3_efwlf"]
+[ext_resource type="Texture2D" uid="uid://ksor2ek4f62g" path="res://Assets/wire_angle_diagonal.png" id="4_cwf72"]
+[ext_resource type="Texture2D" uid="uid://cwhgje5n55gow" path="res://Assets/wire_entry_point.png" id="5_ybomr"]
+[ext_resource type="PackedScene" uid="uid://bedy3pqyxb5of" path="res://Scenes/GUI/socket.tscn" id="6_jd6n1"]
+[ext_resource type="PackedScene" uid="uid://h4kttepilw52" path="res://Scenes/GUI/cpu.tscn" id="7_ielsw"]
+[ext_resource type="Script" path="res://Scenes/Levels/path.gd" id="8_340i4"]
+[ext_resource type="PackedScene" uid="uid://cd43rmh3olkh5" path="res://Scenes/GUI/glow.tscn" id="9_lqdna"]
 
 [sub_resource type="Curve2D" id="Curve2D_w0x51"]
 _data = {
@@ -16,21 +16,32 @@ _data = {
 }
 point_count = 11
 
+[sub_resource type="Curve2D" id="Curve2D_15vaf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 370.073, 152, 0, 0, 0, 0, 320, 152, 0, 0, 0, 0, 320, 193, 0, 0, 0, 0, 333.909, 208, 0, 0, 0, 0, 333.909, 243)
+}
+point_count = 5
+
 [node name="Level" type="Node2D"]
-script = ExtResource("1_mxfo8")
+script = ExtResource("1_7evfh")
 _level_name = "Probation Period: First Week"
 _author = "Urban Hacker"
 _official_level = true
-_allow_upgrades = false
-_allow_destruction = false
+_waves = 2
 
 [node name="Waves" type="Node" parent="."]
 
 [node name="Wave1" type="Node" parent="Waves"]
-script = ExtResource("2_3dn8p")
+script = ExtResource("2_gv0w0")
 _quantity_of_ennemies = 3
 _cooldown_between_spawn = 2.0
 _average_ennemies_speed = 1.5
+
+[node name="Wave2" type="Node" parent="Waves"]
+script = ExtResource("2_gv0w0")
+_quantity_of_ennemies = 5
+_cooldown_between_spawn = 2.5
+_level = 2
 
 [node name="Ambiance" type="CanvasModulate" parent="."]
 color = Color(0.596078, 0.337255, 0.992157, 1)
@@ -54,57 +65,57 @@ scale = Vector2(-1, 1)
 [node name="VerticalConnector3" type="Sprite2D" parent="Background/WiresDeco/Node2D"]
 position = Vector2(421, 165.999)
 rotation = 1.5708
-texture = ExtResource("3_t0412")
+texture = ExtResource("3_efwlf")
 
 [node name="VerticalConnector4" type="Sprite2D" parent="Background/WiresDeco/Node2D"]
 position = Vector2(421, 141.999)
 rotation = 1.5708
-texture = ExtResource("3_t0412")
+texture = ExtResource("3_efwlf")
 
 [node name="AngleConnector3" type="Sprite2D" parent="Background/WiresDeco/Node2D"]
 position = Vector2(421, 118)
 rotation = -1.5708
-texture = ExtResource("4_5u2ow")
+texture = ExtResource("4_cwf72")
 flip_h = true
 flip_v = true
 
 [node name="AngleConnector4" type="Sprite2D" parent="Background/WiresDeco/Node2D"]
 position = Vector2(436, 117)
 rotation = -1.5708
-texture = ExtResource("4_5u2ow")
+texture = ExtResource("4_cwf72")
 
 [node name="AngleConnector5" type="Sprite2D" parent="Background/WiresDeco/Node2D"]
 position = Vector2(421, 190)
 rotation = -1.5708
-texture = ExtResource("4_5u2ow")
+texture = ExtResource("4_cwf72")
 flip_v = true
 
 [node name="VerticalConnector6" type="Sprite2D" parent="Background/WiresDeco"]
 position = Vector2(297, 168)
 rotation = 1.5708
-texture = ExtResource("3_t0412")
+texture = ExtResource("3_efwlf")
 
 [node name="VerticalConnector7" type="Sprite2D" parent="Background/WiresDeco"]
 position = Vector2(297, 144)
 rotation = 1.5708
-texture = ExtResource("3_t0412")
+texture = ExtResource("3_efwlf")
 
 [node name="VerticalConnector8" type="Sprite2D" parent="Background/WiresDeco"]
 position = Vector2(325, 72)
 rotation = 1.5708
-texture = ExtResource("3_t0412")
+texture = ExtResource("3_efwlf")
 
 [node name="AngleConnector6" type="Sprite2D" parent="Background/WiresDeco"]
 position = Vector2(297, 120)
 rotation = -1.5708
-texture = ExtResource("4_5u2ow")
+texture = ExtResource("4_cwf72")
 flip_h = true
 flip_v = true
 
 [node name="AngleConnector8" type="Sprite2D" parent="Background/WiresDeco"]
 position = Vector2(297, 192)
 rotation = -1.5708
-texture = ExtResource("4_5u2ow")
+texture = ExtResource("4_cwf72")
 flip_v = true
 
 [node name="WireCache" type="ColorRect" parent="Background"]
@@ -123,34 +134,34 @@ metadata/_edit_group_ = true
 [node name="VerticalConnector" type="Sprite2D" parent="Wires/Node2D"]
 position = Vector2(320, 128)
 rotation = 1.5708
-texture = ExtResource("3_t0412")
+texture = ExtResource("3_efwlf")
 
 [node name="VerticalConnector2" type="Sprite2D" parent="Wires/Node2D"]
 position = Vector2(344, 152)
 rotation = 3.14159
-texture = ExtResource("3_t0412")
+texture = ExtResource("3_efwlf")
 
 [node name="AngleConnector" type="Sprite2D" parent="Wires/Node2D"]
 position = Vector2(320, 104)
 rotation = -1.5708
-texture = ExtResource("4_5u2ow")
+texture = ExtResource("4_cwf72")
 flip_h = true
 
 [node name="AngleConnector2" type="Sprite2D" parent="Wires/Node2D"]
 position = Vector2(305, 103)
 rotation = -1.5708
-texture = ExtResource("4_5u2ow")
+texture = ExtResource("4_cwf72")
 flip_v = true
 
 [node name="EntryPoint" type="Sprite2D" parent="Wires/Node2D"]
 position = Vector2(305, 79)
 rotation = -1.5708
-texture = ExtResource("5_s1fac")
+texture = ExtResource("5_ybomr")
 flip_h = true
 
 [node name="EntryPoint2" type="Sprite2D" parent="Wires/Node2D"]
 position = Vector2(368, 152)
-texture = ExtResource("5_s1fac")
+texture = ExtResource("5_ybomr")
 flip_h = true
 
 [node name="Node2D2" type="Node2D" parent="Wires"]
@@ -159,23 +170,23 @@ position = Vector2(19, 19)
 [node name="VerticalConnector" type="Sprite2D" parent="Wires/Node2D2"]
 position = Vector2(301, 157)
 rotation = 1.5708
-texture = ExtResource("3_t0412")
+texture = ExtResource("3_efwlf")
 
 [node name="VerticalConnector2" type="Sprite2D" parent="Wires/Node2D2"]
 position = Vector2(316, 202)
 rotation = 1.5708
-texture = ExtResource("3_t0412")
+texture = ExtResource("3_efwlf")
 
 [node name="AngleConnector" type="Sprite2D" parent="Wires/Node2D2"]
 position = Vector2(316, 182)
 rotation = -1.5708
-texture = ExtResource("4_5u2ow")
+texture = ExtResource("4_cwf72")
 flip_h = true
 
 [node name="AngleConnector2" type="Sprite2D" parent="Wires/Node2D2"]
 position = Vector2(301, 181)
 rotation = -1.5708
-texture = ExtResource("4_5u2ow")
+texture = ExtResource("4_cwf72")
 flip_v = true
 
 [node name="Sockets" type="Node2D" parent="."]
@@ -183,20 +194,28 @@ position = Vector2(-1, 0)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="Socket" parent="Sockets" instance=ExtResource("6_dpxmn")]
+[node name="Socket" parent="Sockets" instance=ExtResource("6_jd6n1")]
 position = Vector2(321, 152)
 _connector_up = true
 _connector_right = true
 _connector_down = true
 
-[node name="CPU" parent="Sockets" instance=ExtResource("7_l5rsi")]
+[node name="CPU" parent="Sockets" instance=ExtResource("7_ielsw")]
 position = Vector2(336, 243)
 
 [node name="Paths" type="Node2D" parent="."]
 
 [node name="Path2D" type="Path2D" parent="Paths"]
 curve = SubResource("Curve2D_w0x51")
-script = ExtResource("8_gv4lp")
+script = ExtResource("8_340i4")
+_active_waves = Array[bool]([false, true])
+
+[node name="Path2D2" type="Path2D" parent="Paths"]
+position = Vector2(-25.0981, 0)
+scale = Vector2(1.07843, 1)
+curve = SubResource("Curve2D_15vaf")
+script = ExtResource("8_340i4")
+_active_waves = Array[bool]([true, false])
 
 [node name="PostProcessing" type="Node2D" parent="."]
 visible = false
@@ -205,5 +224,5 @@ z_as_relative = false
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="Glow" parent="PostProcessing" instance=ExtResource("9_kqjlv")]
+[node name="Glow" parent="PostProcessing" instance=ExtResource("9_lqdna")]
 metadata/_edit_group_ = true

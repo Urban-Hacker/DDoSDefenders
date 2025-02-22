@@ -86,4 +86,3 @@ func get_in_folder(path) -> Array:
 
 	files.sort()
 	return files
-

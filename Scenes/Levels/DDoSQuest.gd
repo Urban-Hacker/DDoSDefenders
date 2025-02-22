@@ -25,5 +25,8 @@ func get_mail() -> String:
 	#$Terminal.add_line("\n")
 	var mail = "Subject: " + quest_name + "\n"
 	mail += "------------------------------\n"
-	mail += quest_description.replace("[objectives]", quest_objective)
+	mail += quest_description
+	mail = mail.replace("[objectives]", quest_objective)
+	mail = mail.replace("[player_name]", Core.get_player_name().to_lower())
+	mail = mail.replace("’","'")
 	return mail

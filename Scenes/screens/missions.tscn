@@ -257,6 +257,7 @@ metadata/_edit_lock_ = true
 [node name="BackgroundGrid" parent="GUI" instance=ExtResource("7_tijs0")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="GUI"]
+visible = false
 color = Color(0.0941176, 0.321569, 0.352941, 1)
 
 [node name="U" type="Control" parent="GUI"]
@@ -311,9 +312,11 @@ horizontal_alignment = 2
 [node name="QuestsMenu" parent="GUI/U" instance=ExtResource("10_ul2h7")]
 
 [node name="PointLight2D" type="PointLight2D" parent="GUI"]
+visible = false
 position = Vector2(320, 192)
 color = Color(0, 0.572549, 0.419608, 1)
 range_layer_min = 1
 range_layer_max = 1
 texture = ExtResource("3_m0glj")
+texture_scale = 1.5
 metadata/_edit_lock_ = true

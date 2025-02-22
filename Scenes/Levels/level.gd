@@ -4,6 +4,8 @@ extends Node2D
 @export var _author:String
 @export var _official_level:bool
 @export var _waves:int = 1
+@export var _allow_upgrades:bool = true
+@export var _allow_destruction:bool = true
 
 var _enemy_creator:Timer
 var _switch_to_next_wave:Timer
@@ -30,6 +32,9 @@ func _ready():
 	_switch_to_next_wave.autostart = false
 	_switch_to_next_wave.one_shot = true
 	add_child(_switch_to_next_wave)
+	
+	get_tree().call_group("sockets", "allow_upgrades", _allow_upgrades)
+	get_tree().call_group("sockets", "allow_destruction", _allow_destruction)
 
 func _on_enemy_creator_timeout():
 	var wave = get_node("Waves/Wave" + str(_current_wave))

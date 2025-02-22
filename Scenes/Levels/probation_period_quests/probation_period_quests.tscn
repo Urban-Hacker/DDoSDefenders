@@ -9,29 +9,21 @@ script = ExtResource("3_14bcp")
 _smartContracts = 0
 _level = ExtResource("2_le330")
 id = 0
-quest_name = "First day of work"
-quest_description = "Welcome aboard! We're excited to have you join our team.
+quest_name = "Welcome"
+quest_description = "Hi [player_name],
+Welcome aboard! We’re thrilled to have you join the DDoS Defenders Team
 
-DDoS attacks flood networks with malicious data,
-visualized as binary code, aiming to overwhelm the CPU core.
+DDoS attacks flood networks with malicious data, visualized as binary code, aiming to overwhelm the CPU core.
 
-To defend against these attacks,
-click the empty slot to install a defense chip.
+For your first day your goal will be to build a simple defense to protect the CPU core.
 
-The simplest chip, \"SUB 1\" reduces
-each packet's TTL (Time To Live) by 1.
-A packet is neutralized once its TTL becomes negative.
-
-Your objectives are:
-[objectives]
-
-Together, let's achieve great success!
+The simplest chip, \"SUB 1\" reduces,each packet's TTL (Time To Live) by 1.
+[color=red]A packet is neutralized once its TTL becomes negative.[/color]
 
 Alex Mercer
 Head of Security Operations
 DDoS Defenders"
-quest_objective = "* Learn the basic (+20$)
-* Load (+10$)"
+quest_objective = "* Build a simple defense to protect the CPU core"
 
 [sub_resource type="Resource" id="Resource_2expf"]
 script = ExtResource("3_14bcp")
