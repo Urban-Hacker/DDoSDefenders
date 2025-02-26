@@ -1,7 +1,7 @@
 [gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://cid7m6o0n5ort"]
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_2deie"]
-constant = 1.0
+constant = 0.5
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_jf6dk"]
 input_name = "screen_uv"
@@ -94,7 +94,7 @@ void fragment() {
 
 
 // FloatConstant:4
-	float n_out4p0 = 1.000000;
+	float n_out4p0 = 0.500000;
 
 
 // Output:0

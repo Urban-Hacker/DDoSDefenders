@@ -29,6 +29,7 @@ func refresh() -> void:
 	$Widget/Label.text = Core.int_to_bin_str(_ttl, _level)
 
 func hit_cpu_and_die() -> void:
+	Core.current_level.hit_cpu()
 	queue_free()
 
 func is_in_range(yes:bool) -> void:
@@ -46,6 +47,7 @@ func is_in_range(yes:bool) -> void:
 func getting_attacked_by_subtractor(level:int) -> void:
 	_ttl -= level
 	if _ttl < 0:
+		Core.record_transaction(_level + 1)
 		queue_free()
 
 func getting_attacked_by_shift_right(level:int) -> void:

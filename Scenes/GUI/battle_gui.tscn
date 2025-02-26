@@ -1,0 +1,145 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4533ebbd367t"]
+
+[ext_resource type="Script" path="res://Scenes/GUI/battle_gui.gd" id="1_bse1p"]
+[ext_resource type="Texture2D" uid="uid://dttcnrovc676q" path="res://Assets/Lightmask.png" id="1_t1dnf"]
+
+[node name="BattleGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_bse1p")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 24.0
+color = Color(0.054427, 0.0572714, 0.0924165, 1)
+
+[node name="Label" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 544.0
+offset_right = 632.0
+offset_bottom = 24.0
+text = "[0/0] CPU"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Money" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 472.0
+offset_right = 560.0
+offset_bottom = 24.0
+text = "[0/0] $"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Title" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 168.0
+offset_bottom = 24.0
+text = "[title]"
+vertical_alignment = 1
+
+[node name="PopupLost" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="PopupLost"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 512.0
+offset_bottom = 256.0
+color = Color(0.755003, 0.0989607, 0.0868182, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="PopupLost"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 176.0
+offset_right = 512.0
+offset_bottom = 208.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="PopupLost"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 176.0
+offset_right = 512.0
+offset_bottom = 208.0
+theme_override_colors/font_color = Color(1, 0.279535, 0.151719, 1)
+text = "!!! Game Over !!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="PopupLost"]
+position = Vector2(320, 192)
+color = Color(0.253021, 0.366838, 0.948964, 1)
+energy = 2.59
+texture = ExtResource("1_t1dnf")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="ButtonGiveUp" type="Button" parent="PopupLost"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 216.0
+offset_right = 504.0
+offset_bottom = 248.0
+text = "Give Up"
+
+[node name="PopupWin" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="PopupWin"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 512.0
+offset_bottom = 256.0
+color = Color(0.279611, 0.467121, 0.16286, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="PopupWin"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 176.0
+offset_right = 512.0
+offset_bottom = 208.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="PopupWin"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 176.0
+offset_right = 512.0
+offset_bottom = 208.0
+theme_override_colors/font_color = Color(1, 0.279535, 0.151719, 1)
+text = "!!! Threat Neutralized !!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="PopupWin"]
+position = Vector2(320, 192)
+color = Color(0, 0.572549, 0.419608, 1)
+energy = 1.5
+texture = ExtResource("1_t1dnf")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="ButtonGiveUp" type="Button" parent="PopupWin"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 216.0
+offset_right = 504.0
+offset_bottom = 248.0
+text = "Congratulation"
+
+[connection signal="pressed" from="PopupLost/ButtonGiveUp" to="." method="_on_button_give_up_pressed"]
+[connection signal="pressed" from="PopupWin/ButtonGiveUp" to="." method="_on_button_give_up_pressed"]

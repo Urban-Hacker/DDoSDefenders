@@ -7,9 +7,17 @@ extends Node2D
 @export var _allow_upgrades:bool = true
 @export var _allow_destruction:bool = true
 
+@export var _allow_sub:bool = true
+@export var _allow_shift:bool = true
+@export var _allow_memory:bool = true
+@export var _allow_accumulator:bool = true
+
 var _enemy_creator:Timer
 var _switch_to_next_wave:Timer
 var _current_wave:int
+var _cpu_total_lives:int = 3
+var _cpu_lives:int = 3
+var _winning_cool_down:int = 1
 
 func _init():
 	Core.current_level = self
@@ -35,6 +43,10 @@ func _ready():
 	
 	get_tree().call_group("sockets", "allow_upgrades", _allow_upgrades)
 	get_tree().call_group("sockets", "allow_destruction", _allow_destruction)
+	get_tree().call_group("sockets", "enable_chips", _allow_sub, _allow_shift, _allow_memory, _allow_accumulator)
+
+	$BattleGUI/Background/Title.text = _level_name
+	refresh()
 
 func _on_enemy_creator_timeout():
 	var wave = get_node("Waves/Wave" + str(_current_wave))
@@ -45,6 +57,12 @@ func _on_enemy_creator_timeout():
 	else:
 		if _current_wave != _waves:
 			_switch_to_next_wave.start(wave.get_cooldown_before_next_wave())
+		else:
+			if get_tree().get_nodes_in_group("packets").size() == 0 and _cpu_lives > 0:
+				_winning_cool_down -= 1
+				if _winning_cool_down <= 0:
+					_turn_off_lights()
+					$BattleGUI/PopupWin.show()
 	_enemy_creator.stop()
 	_enemy_creator.start(wave.get_cooldown())
 
@@ -65,6 +83,21 @@ func _self_tests():
 	assert($PostProcessing.z_as_relative == false)
 
 	assert(len($Waves.get_children()) == _waves)
+
+func _turn_off_lights() -> void:
+	get_tree().call_group("sockets", "hide")
+	get_tree().call_group("targets", "hide")
+
+func hit_cpu() -> void:
+	_cpu_lives -= 1
+	if (_cpu_lives <= 0):
+		_turn_off_lights()
+		$BattleGUI/PopupLost.show()
+	refresh()
+
+func refresh() -> void:
+	$BattleGUI/Background/Label.text = str(_cpu_lives) + "/" + str(_cpu_total_lives) + " CPU"
+	
 
 func get_spawn_point() -> Node:
 	var spawn_candidates = $Paths.get_children()

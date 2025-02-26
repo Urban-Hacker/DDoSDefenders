@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpci6qhatd6cj"]
+[gd_scene load_steps=12 format=3 uid="uid://cpci6qhatd6cj"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_mxfo8"]
 [ext_resource type="Script" path="res://Scenes/Levels/wave.gd" id="2_3dn8p"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bedy3pqyxb5of" path="res://Scenes/GUI/socket.tscn" id="6_dpxmn"]
 [ext_resource type="PackedScene" uid="uid://h4kttepilw52" path="res://Scenes/GUI/cpu.tscn" id="7_l5rsi"]
 [ext_resource type="Script" path="res://Scenes/Levels/path.gd" id="8_gv4lp"]
+[ext_resource type="PackedScene" uid="uid://c4533ebbd367t" path="res://Scenes/GUI/battle_gui.tscn" id="9_55x7l"]
 [ext_resource type="PackedScene" uid="uid://cd43rmh3olkh5" path="res://Scenes/GUI/glow.tscn" id="9_kqjlv"]
 
 [sub_resource type="Curve2D" id="Curve2D_w0x51"]
@@ -23,6 +24,9 @@ _author = "Urban Hacker"
 _official_level = true
 _allow_upgrades = false
 _allow_destruction = false
+_allow_shift = false
+_allow_memory = false
+_allow_accumulator = false
 
 [node name="Waves" type="Node" parent="."]
 
@@ -33,7 +37,7 @@ _cooldown_between_spawn = 2.0
 _average_ennemies_speed = 1.5
 
 [node name="Ambiance" type="CanvasModulate" parent="."]
-color = Color(0.596078, 0.337255, 0.992157, 1)
+color = Color(0.0941176, 0.321569, 0.352941, 1)
 
 [node name="Background" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -189,7 +193,7 @@ _connector_up = true
 _connector_right = true
 _connector_down = true
 
-[node name="CPU" parent="Sockets" instance=ExtResource("7_l5rsi")]
+[node name="CPU" parent="Sockets" groups=["targets"] instance=ExtResource("7_l5rsi")]
 position = Vector2(336, 243)
 
 [node name="Paths" type="Node2D" parent="."]
@@ -198,8 +202,9 @@ position = Vector2(336, 243)
 curve = SubResource("Curve2D_w0x51")
 script = ExtResource("8_gv4lp")
 
+[node name="BattleGUI" parent="." instance=ExtResource("9_55x7l")]
+
 [node name="PostProcessing" type="Node2D" parent="."]
-visible = false
 z_index = 1000
 z_as_relative = false
 metadata/_edit_group_ = true

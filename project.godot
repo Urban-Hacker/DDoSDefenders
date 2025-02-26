@@ -40,6 +40,15 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray("res://addons/UnderscoreMeansPrivate/plugin.cfg", "res://addons/quest_system/plugin.cfg", "res://addons/save_system/plugin.cfg")
 
+[global_group]
+
+packets=""
+targets=""
+
+[gui]
+
+theme/custom="res://GUI/lcd_display.tres"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
