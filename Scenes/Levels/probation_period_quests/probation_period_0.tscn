@@ -111,13 +111,6 @@ rotation = -1.5708
 texture = ExtResource("4_5u2ow")
 flip_v = true
 
-[node name="WireCache" type="ColorRect" parent="Background"]
-offset_left = 333.0
-offset_top = 145.0
-offset_right = 347.0
-offset_bottom = 159.0
-color = Color(0.0117189, 0.0312505, 0.156802, 1)
-
 [node name="Wires" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
@@ -130,6 +123,7 @@ rotation = 1.5708
 texture = ExtResource("3_t0412")
 
 [node name="VerticalConnector2" type="Sprite2D" parent="Wires/Node2D"]
+visible = false
 position = Vector2(344, 152)
 rotation = 3.14159
 texture = ExtResource("3_t0412")
@@ -153,6 +147,7 @@ texture = ExtResource("5_s1fac")
 flip_h = true
 
 [node name="EntryPoint2" type="Sprite2D" parent="Wires/Node2D"]
+visible = false
 position = Vector2(368, 152)
 texture = ExtResource("5_s1fac")
 flip_h = true
@@ -190,7 +185,6 @@ metadata/_edit_lock_ = true
 [node name="Socket" parent="Sockets" instance=ExtResource("6_dpxmn")]
 position = Vector2(321, 152)
 _connector_up = true
-_connector_right = true
 _connector_down = true
 
 [node name="CPU" parent="Sockets" groups=["targets"] instance=ExtResource("7_l5rsi")]

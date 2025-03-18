@@ -18,6 +18,12 @@ script = ExtResource("1_hif8q")
 wait_time = 0.1
 autostart = true
 
+[node name="ButtonInvert" type="Button" parent="."]
+offset_left = -16.0
+offset_top = -8.0
+offset_right = 16.0
+offset_bottom = 5.0
+
 [node name="Widget" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -25,6 +31,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 theme = ExtResource("2_0quk4")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="Widget"]
 material = SubResource("CanvasItemMaterial_kjtg3")
@@ -59,3 +67,4 @@ mouse_filter = 2
 color = Color(0.803922, 0, 0.937255, 0.345098)
 
 [connection signal="timeout" from="Move" to="." method="_on_move_timeout"]
+[connection signal="pressed" from="ButtonInvert" to="." method="_on_button_invert_pressed"]

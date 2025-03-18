@@ -3,6 +3,7 @@ extends Control
 var _current_quest:Quest
 
 func _ready():
+	$StartMission.hide()
 	$Terminal.clear_buffer()
 	_load_quests("res://Scenes/Levels/probation_period_quests/probation_period_quests.tscn")
 
@@ -29,6 +30,7 @@ func _on_load_quest_description(btn):
 	#$Terminal.load_file("res://ASCIIArt/logo_mail.txt")
 	$Terminal.add_lines(_current_quest.get_mail())
 	$Terminal.add_line("\n")
+	$StartMission.show()
 
 
 func _on_start_mission_pressed() -> void:
