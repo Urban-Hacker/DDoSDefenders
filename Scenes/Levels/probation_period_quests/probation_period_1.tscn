@@ -42,10 +42,10 @@ _average_ennemies_speed = 1.5
 script = ExtResource("2_gv0w0")
 _quantity_of_ennemies = 5
 _cooldown_between_spawn = 2.5
-_level = 2
+_level = 1
 
 [node name="Ambiance" type="CanvasModulate" parent="."]
-color = Color(0.596078, 0.337255, 0.992157, 1)
+color = Color(0.812023, 0.740449, 0.998576, 1)
 
 [node name="Background" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

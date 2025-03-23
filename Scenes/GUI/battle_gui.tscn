@@ -10,13 +10,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_bse1p")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="TopBackground" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 24.0
 color = Color(0.054427, 0.0572714, 0.0924165, 1)
 
-[node name="Label" type="Label" parent="Background"]
+[node name="Label" type="Label" parent="TopBackground"]
 layout_mode = 0
 offset_left = 544.0
 offset_right = 632.0
@@ -25,7 +25,7 @@ text = "[0/0] CPU"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Money" type="Label" parent="Background"]
+[node name="Money" type="Label" parent="TopBackground"]
 layout_mode = 0
 offset_left = 472.0
 offset_right = 560.0
@@ -34,13 +34,28 @@ text = "[0/0] $"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Title" type="Label" parent="Background"]
+[node name="Title" type="Label" parent="TopBackground"]
 layout_mode = 0
 offset_left = 8.0
 offset_right = 168.0
 offset_bottom = 24.0
 text = "[title]"
 vertical_alignment = 1
+
+[node name="BottomBackground" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 328.0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.054427, 0.0572714, 0.0924165, 1)
+
+[node name="PauseButton" type="Button" parent="BottomBackground"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 4.0
+offset_right = 416.0
+offset_bottom = 28.0
+text = "Pause Game"
 
 [node name="PopupLost" type="Control" parent="."]
 visible = false
@@ -142,5 +157,6 @@ offset_right = 504.0
 offset_bottom = 248.0
 text = "Congratulation"
 
+[connection signal="pressed" from="BottomBackground/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="PopupLost/ButtonGiveUp" to="." method="_on_button_give_up_pressed"]
 [connection signal="pressed" from="PopupWin/ButtonGiveUp" to="." method="_on_button_give_up_pressed"]

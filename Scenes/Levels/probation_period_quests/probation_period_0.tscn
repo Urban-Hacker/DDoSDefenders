@@ -37,7 +37,7 @@ _cooldown_between_spawn = 2.0
 _average_ennemies_speed = 1.5
 
 [node name="Ambiance" type="CanvasModulate" parent="."]
-color = Color(0.0941176, 0.321569, 0.352941, 1)
+color = Color(0.223554, 0.619116, 0.674242, 1)
 
 [node name="Background" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

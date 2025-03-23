@@ -45,7 +45,7 @@ func _ready():
 	get_tree().call_group("sockets", "allow_destruction", _allow_destruction)
 	get_tree().call_group("sockets", "enable_chips", _allow_sub, _allow_shift, _allow_memory, _allow_accumulator)
 
-	$BattleGUI/Background/Title.text = _level_name
+	$BattleGUI.set_title(_level_name)
 	refresh()
 
 func _on_enemy_creator_timeout():
@@ -96,7 +96,7 @@ func hit_cpu() -> void:
 	refresh()
 
 func refresh() -> void:
-	$BattleGUI/Background/Label.text = str(_cpu_lives) + "/" + str(_cpu_total_lives) + " CPU"
+	$BattleGUI.update_lives(str(_cpu_lives) + "/" + str(_cpu_total_lives) + " CPU")
 	
 
 func get_spawn_point() -> Node:
