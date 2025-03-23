@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccd6wm33lhp57"]
+[gd_scene load_steps=12 format=3 uid="uid://ccd6wm33lhp57"]
 
 [ext_resource type="Texture2D" uid="uid://dxqhjc373uk0v" path="res://Assets/logo.png" id="1_6pn0b"]
 [ext_resource type="Theme" uid="uid://bddpr6qdxh17i" path="res://GUI/lcd_display.tres" id="1_33hae"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://fxirdlxe364e" path="res://GUI/ReadyPlayerOne.ttf" id="5_b4sum"]
 [ext_resource type="PackedScene" uid="uid://cve107pf55go" path="res://Scenes/GUI/changelog_menu.tscn" id="5_n1gdx"]
 [ext_resource type="PackedScene" uid="uid://cd43rmh3olkh5" path="res://Scenes/GUI/glow.tscn" id="6_8w36f"]
+[ext_resource type="Texture2D" uid="uid://cjr52vy4t217g" path="res://Assets/logo2.png" id="6_xpm1w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aicyt"]
 bg_color = Color(0, 0, 0, 0.458824)
@@ -78,6 +79,10 @@ metadata/_edit_group_ = true
 position = Vector2(317, 163)
 texture = ExtResource("1_6pn0b")
 
+[node name="Sprite2" type="Sprite2D" parent="GUI/LogoMenu"]
+position = Vector2(317, 163)
+texture = ExtResource("6_xpm1w")
+
 [node name="ColorRect" type="ColorRect" parent="GUI/LogoMenu"]
 layout_mode = 0
 offset_top = 192.0
@@ -87,6 +92,22 @@ color = Color(0.0507973, 0.168536, 0.270634, 1)
 metadata/_edit_lock_ = true
 
 [node name="Slogan" type="Label" parent="GUI/LogoMenu"]
+material = SubResource("CanvasItemMaterial_bohnx")
+layout_mode = 0
+offset_left = 192.0
+offset_top = 190.0
+offset_right = 448.0
+offset_bottom = 216.0
+theme_override_colors/font_color = Color(0.937255, 0, 0.137255, 1)
+theme_override_colors/font_outline_color = Color(0.858824, 0, 0.470588, 0.529412)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("5_b4sum")
+text = "Cyber Sec Corp"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slogan2" type="Label" parent="GUI/LogoMenu"]
+visible = false
 material = SubResource("CanvasItemMaterial_bohnx")
 layout_mode = 0
 offset_left = 192.0
@@ -126,13 +147,12 @@ alignment = 2
 [node name="LoginButton" type="Button" parent="GUI/Buttons"]
 layout_mode = 0
 offset_left = 256.0
-offset_top = 288.0
+offset_top = 297.0
 offset_right = 384.0
-offset_bottom = 319.0
+offset_bottom = 328.0
 text = "Login"
 
 [node name="Glow" parent="." instance=ExtResource("6_8w36f")]
-visible = false
 
 [connection signal="button_down" from="GUI/Escape" to="." method="_on_escape_button_down"]
 [connection signal="pressed" from="GUI/Buttons/ChangelogButton" to="." method="_on_changelog_button_pressed"]

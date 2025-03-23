@@ -4,6 +4,7 @@ extends Node
 @export var _cooldown_between_spawn:float = 1.0
 @export var _cooldown_before_next_wave:float = 2.0
 @export var _average_ennemies_speed:float = 1.0
+@export var _level:int = 0
 
 func _ready():
 	assert (name.begins_with("Wave") == true)
@@ -23,3 +24,6 @@ func get_cooldown_before_next_wave() -> float:
 
 func get_average_ennemies_speed() -> float:
 	return _average_ennemies_speed
+
+func get_level() -> int:
+	return _level

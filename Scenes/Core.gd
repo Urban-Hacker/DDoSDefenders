@@ -3,7 +3,7 @@ extends Node
 signal on_balance_changed
 signal on_escape
 
-var _sats:int = 200 # sats = satoshi
+var _sats:int = 20 # sats = satoshi
 var current_level:Node
 
 
@@ -86,4 +86,3 @@ func get_in_folder(path) -> Array:
 
 	files.sort()
 	return files
-

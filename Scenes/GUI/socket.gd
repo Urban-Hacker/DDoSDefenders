@@ -5,7 +5,10 @@ extends Node2D
 @export var _connector_right:bool = false
 @export var _connector_down:bool = false
 
-@export var _show_upgrades:bool = true
+var _allow_sub:bool = true
+var _allow_shift:bool = true
+var _allow_memory:bool = true
+var _allow_accumulator:bool = true
 
 @export var _type:Enum.ChipTypes
 var _current_type:Enum.ChipTypes
@@ -14,6 +17,9 @@ var _level:int
 var _collision_candidates:Dictionary
 var _is_cooling_down:bool
 var _memory_full:bool # used for memory type chips
+
+var _allow_upgrade:bool = true
+var _allow_destruction:bool = true
 
 func _ready():
 	_is_cooling_down = false
@@ -145,7 +151,7 @@ func _render_prices():
 
 func _on_socket_button_pressed():
 
-	if _current_type != Enum.ChipTypes.empty and not _show_upgrades:
+	if _current_type != Enum.ChipTypes.empty and (not _allow_upgrade and not _allow_destruction):
 		return
 
 	if _memory_full:
@@ -159,6 +165,15 @@ func _on_socket_button_pressed():
 		$GUI/Build.show()
 	else:
 		$GUI/Upgrade.show()
+	
+	$GUI/Upgrade/UpgradeButton.visible = _allow_upgrade
+	$GUI/Upgrade/DestroyButton.visible = _allow_destruction
+	
+	$GUI/Build/SubtractorButton.visible = _allow_sub
+	$GUI/Build/ShiftRightButton.visible = _allow_shift
+	$GUI/Build/MemButton.visible = _allow_memory
+	$GUI/Build/AccumulatorButton.visible = _allow_accumulator
+
 
 
 func _on_escape_button_down():
@@ -192,7 +207,18 @@ func _attack():
 		if _current_type == Enum.ChipTypes.accumulator:
 			pass
 			#_collision_candidates[candidate].getting_attacked_by_subtractor(_level)
-		
+
+func allow_upgrades(upgrade:bool) -> void:
+	_allow_upgrade = upgrade
+
+func allow_destruction(destruction:bool) -> void:
+	_allow_destruction = destruction
+
+func enable_chips(allow_sub, allow_shift, allow_memory, allow_accumulator) -> void:
+	_allow_sub = allow_sub
+	_allow_shift = allow_shift
+	_allow_memory = allow_memory
+	_allow_accumulator = allow_accumulator
 
 # We do this enable / disable trick because $GUI Z order is not affecting input order
 func disable() -> void:

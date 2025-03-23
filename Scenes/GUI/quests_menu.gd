@@ -1,7 +1,9 @@
 extends Control
 
-# Called when the node enters the scene tree for the first time.
+var _current_quest:Quest
+
 func _ready():
+	$StartMission.hide()
 	$Terminal.clear_buffer()
 	_load_quests("res://Scenes/Levels/probation_period_quests/probation_period_quests.tscn")
 
@@ -24,7 +26,12 @@ func _load_quests(path:String) -> void:
 func _on_load_quest_description(btn):
 	print("---")
 	$Terminal.clear_buffer()
-	var quest = btn.get_quest()
-	$Terminal.load_file("res://ASCIIArt/logo_mail.txt")
-	$Terminal.add_lines(btn.get_quest().get_mail())
+	_current_quest = btn.get_quest()
+	#$Terminal.load_file("res://ASCIIArt/logo_mail.txt")
+	$Terminal.add_lines(_current_quest.get_mail())
 	$Terminal.add_line("\n")
+	$StartMission.show()
+
+
+func _on_start_mission_pressed() -> void:
+	_current_quest.launch()
